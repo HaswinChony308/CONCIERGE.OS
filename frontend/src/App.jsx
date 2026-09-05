@@ -291,7 +291,8 @@ export default function App() {
             type: 'payment_success',
             price: checkoutItem.price,
             sku: checkoutItem.sku,
-            rzp_id: data.rzp_id
+            rzp_id: data.rzp_id,
+            short_url: data.short_url
           }
         ]);
       } else if (status === 'DECLINED') {

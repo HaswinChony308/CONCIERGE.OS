@@ -5,6 +5,7 @@ import time
 import random
 import urllib.request
 import urllib.error
+import razorpay
 from datetime import datetime
 from flask import Flask, request, jsonify, send_file, send_from_directory
 from flask_cors import CORS
@@ -699,6 +700,34 @@ def simulate_payment():
     if status == 'SUCCESS':
         rzp_id = f"pay_test_{hex(random.randint(1000000, 16777215))[2:]}"
         order_id = f"order_test_{random.randint(100000, 999999)}"
+        short_url = None
+        
+        key_id = os.environ.get('RAZORPAY_KEY_ID')
+        key_secret = os.environ.get('RAZORPAY_KEY_SECRET')
+        
+        if key_id and key_secret and key_id.startswith('rzp_test_'):
+            try:
+                client = razorpay.Client(auth=(key_id, key_secret))
+                plink_data = {
+                    "amount": price * 100,
+                    "currency": "INR",
+                    "accept_partial": False,
+                    "description": f"Concierge Checkout: {name} ({sku})",
+                    "customer": {
+                        "name": "Concierge Test User",
+                        "email": "test@example.com",
+                        "contact": "+919999999999"
+                    },
+                    "notify": {"sms": False, "email": False},
+                    "reminder_enable": False,
+                    "notes": {"trace_id": trace_id, "mode": mode}
+                }
+                payment_link = client.payment_link.create(plink_data)
+                short_url = payment_link.get('short_url')
+                rzp_id = payment_link.get('id')
+            except Exception as e:
+                print(f"Razorpay live link creation failed: {e}")
+
         metrics.record_order_created(order_id, price)
         metrics.record_payment_status(rzp_id, "paid", price)
         
@@ -726,7 +755,8 @@ def simulate_payment():
             "rzp_id": rzp_id,
             "price": price,
             "sku": sku,
-            "rationale": "Razorpay event 'payment.authorized' captured with valid webhook signature. Dispatched confirmation token.",
+            "short_url": short_url,
+            "rationale": f"Live Payment Link Generated: {short_url}" if short_url else "Razorpay event 'payment.authorized' captured with valid webhook signature. Dispatched confirmation token.",
             "tool_logs": [
                 {"tool": "create_order", "payload": {"amount": price * 100, "currency": "INR"}, "result": "order_created_200"},
                 {"tool": "create_payment_link", "payload": {"status": "paid", "amount": price}, "result": "SETTLED_200"},

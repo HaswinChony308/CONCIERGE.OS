@@ -374,7 +374,7 @@ export default function BuyerTerminal({
               );
             }
 
-            if (m.type === 'payment_success') {
+                        if (m.type === 'payment_success') {
               return (
                 <div key={idx} className="flex items-start gap-4 max-w-3xl animate-enter">
                   <div className="w-9 h-9 rounded-xl bg-emerald-500 text-slate-950 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(16,185,129,0.4)]">
@@ -390,6 +390,15 @@ export default function BuyerTerminal({
                         Razorpay ID: <span className="text-cyan-400">{m.rzp_id}</span><br />
                         SKU: <span className="text-white">{m.sku}</span> | Express Dispatch Scheduled.
                       </p>
+                      {m.short_url && (
+                        <div className="mt-4 border-t border-white/10 pt-4">
+                          <a href={m.short_url} target="_blank" rel="noopener noreferrer" 
+                             className="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold rounded-lg shadow-lg transition-colors">
+                              <span className="material-symbols-outlined text-[18px]">open_in_new</span>
+                              Open Live Razorpay Link
+                          </a>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
