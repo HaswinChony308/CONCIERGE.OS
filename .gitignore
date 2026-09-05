@@ -1,0 +1,31 @@
+# Secrets and environment variables
+.env
+.env.local
+*.env
+
+# Python caches
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+
+# Node & Frontend dependencies
+node_modules/
+frontend/node_modules/
+frontend/dist/
+.vite/
+
+# Telemetry logs and test run outputs
+logs/
+*.log
+
+# IDE & OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+.streamlit/

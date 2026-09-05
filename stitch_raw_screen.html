@@ -1,0 +1,1177 @@
+<USER_REQUEST>
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Concierge OS // Autonomous Agentic Commerce</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300..800;1,300..800&amp;family=Open+Sans:ital,wght@0,300..800;1,300..800&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+    @font-face {
+      font-family: 'Product Sans';
+      src: local('Google Sans'), local('Product Sans'), local('Segoe UI'), local('Inter'), sans-serif;
+    }
+    :root, body {
+      font-family: 'Product Sans', 'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+      background-color: #080c14;
+    }
+    .font-mono, .code-font, pre, code, #tool-inspector-content, #proof-content-box, .telemetry-cell {
+      font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+    }
+    /* Smooth Scroll & Custom Scrollbars */
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(15, 20, 34, 0.6);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(16, 185, 129, 0.25);
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(16, 185, 129, 0.5);
+    }
+    /* Ambient backdrop glow effects */
+    .glow-panel {
+      box-shadow: 0 10px 35px -5px rgba(0, 0, 0, 0.5), 0 0 1px 1px rgba(255, 255, 255, 0.05);
+    }
+    .glow-panel:hover {
+      box-shadow: 0 16px 40px -6px rgba(0, 0, 0, 0.6), 0 0 20px -2px rgba(16, 185, 129, 0.12);
+    }
+    /* Animation Keyframes */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-enter {
+      animation: fadeIn 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+  </style>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              emerald: '#10b981',
+              cyan: '#38bdf8',
+              amber: '#f59e0b',
+              rose: '#f43f5e'
+            }
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-[#080c14] text-slate-200 antialiased min-h-screen flex flex-col selection:bg-emerald-500/20 selection:text-emerald-300">
+<!-- ================= TOP HEADER BAR ================= -->
+<header class="sticky top-0 z-50 bg-[#0a0e1a]/85 backdrop-blur-xl border-b border-white/[0.07] px-6 lg:px-10 h-20 flex items-center justify-between transition-all duration-300">
+<div class="flex items-center gap-8">
+<!-- Logo + Brand Title -->
+<div class="flex items-center gap-3.5 group cursor-pointer">
+<div class="relative w-10 h-10 rounded-xl bg-emerald-950/40 border border-emerald-500/30 flex items-center justify-center p-1.5 transition-all duration-300 group-hover:scale-105 group-hover:border-emerald-400 group-hover:shadow-[0_0_20px_rgba(16,185,129,0.3)]">
+<img alt="Concierge OS Logo" class="w-full h-full object-contain filter drop-shadow-[0_0_6px_rgba(16,185,129,0.5)] animate-pulse" src="https://lh3.googleusercontent.com/aida/AEtjO1XsitET1S4UZlNkUQbV0cscizNjZeDo0d7NYBrZZVL1oG6Vrmpt7KcepGQrvLtEQnmWYIzjdgux3woVydf83iLsy98_CUFH7P7qXcAU6HZVI2itx3JeUGzuWWKf_r1m0miiKW6kZ2Gq5AQCpXieWOc5dOHvASmtxZKBE5V09-bZbKITDc0dkDEZFiQ9OdlcilbJs3-tygO40Y28nZEPq-PhEHsxnq2Q4P-kZAdT8lH04aZItmP6Ea9qAIcp"/>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="text-xl font-bold tracking-tight text-white font-sans">CONCIERGE</span>
+<span class="px-2 py-0.5 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-mono font-semibold tracking-wider uppercase">OS v2.4</span>
+</div>
+<span class="text-xs text-slate-400 font-medium -mt-0.5">Autonomous Agentic Commerce</span>
+</div>
+</div>
+<!-- Live Connectivity Status Badges -->
+<div class="hidden xl:flex items-center gap-3 text-xs font-mono">
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900/80 border border-white/[0.08] text-slate-300 hover:border-slate-700 transition-colors">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+</span>
+<span>Razorpay: <strong class="text-cyan-400 font-semibold">TEST-MODE ACTIVE</strong></span>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900/80 border border-white/[0.08] text-slate-300 hover:border-slate-700 transition-colors">
+<span class="material-symbols-outlined text-emerald-400 text-[15px]">shield_check</span>
+<span>Guardrails: <strong class="text-emerald-400 font-semibold" id="top-guardrail-status">₹5,000 Hard Limit</strong></span>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900/80 border border-white/[0.08] text-slate-300 hover:border-slate-700 transition-colors">
+<span class="material-symbols-outlined text-amber-400 text-[15px]">speed</span>
+<span>LangGraph Loop: <strong class="text-amber-400 font-semibold">18.4ms</strong></span>
+</div>
+</div>
+</div>
+<!-- Center/Right: View Navigation Segmented Controller -->
+<div class="flex items-center gap-6">
+<nav class="hidden sm:flex items-center p-1 bg-slate-900/90 border border-white/[0.08] rounded-xl text-xs font-medium">
+<button class="px-4 py-1.5 rounded-lg bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 font-semibold shadow-sm transition-all duration-200 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">terminal</span> Live Terminal
+        </button>
+<button class="px-4 py-1.5 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 transition-all duration-200">
+          Policy Matrix
+        </button>
+<button class="px-4 py-1.5 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 transition-all duration-200">
+          Audit Ledger
+        </button>
+</nav>
+<!-- Merchant Context Pill -->
+<div class="flex items-center gap-3 pl-4 border-l border-white/[0.08]">
+<div class="hidden md:flex flex-col items-end text-right">
+<span class="text-xs font-semibold text-white">Acme Gear Labs</span>
+<span class="text-[11px] font-mono text-slate-400">acc_test_9042</span>
+</div>
+<div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-600 to-cyan-500 p-0.5 shadow-md">
+<div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
+<span class="material-symbols-outlined text-emerald-400 text-lg">storefront</span>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- ================= MAIN CONTENT WRAPPER ================= -->
+<main class="flex-1 w-full max-w-[1720px] mx-auto px-6 lg:px-10 py-8 flex flex-col gap-8">
+<!-- 1. METRICS BANNER (4 Generously spaced KPI Cards) -->
+<section class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
+<!-- KPI 1 -->
+<div class="glow-panel rounded-2xl bg-[#0f1422]/90 border border-white/[0.08] p-6 flex flex-col justify-between relative overflow-hidden group transition-all duration-300 hover:border-emerald-500/40">
+<div class="absolute -top-10 -right-10 w-28 h-28 bg-emerald-500/10 rounded-full blur-2xl group-hover:bg-emerald-500/20 transition-all duration-300"></div>
+<div class="flex items-center justify-between mb-4">
+<span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Autonomous Settlement</span>
+<span class="px-2.5 py-0.5 rounded-full text-[11px] font-mono bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 font-medium">SETTLED (32)</span>
+</div>
+<div>
+<div class="flex items-baseline gap-3">
+<span class="text-3xl lg:text-4xl font-extrabold tracking-tight text-white">₹1,48,250</span>
+<span class="text-xs font-mono font-medium text-emerald-400 flex items-center">
+<span class="material-symbols-outlined text-sm">trending_up</span>+14.2%
+            </span>
+</div>
+<div class="mt-3 pt-3 border-t border-white/[0.06] flex items-center justify-between text-xs text-slate-400">
+<span>Razorpay Sandbox</span>
+<span class="text-cyan-400 font-mono font-medium">99.4% Auth Yield</span>
+</div>
+</div>
+</div>
+<!-- KPI 2 -->
+<div class="glow-panel rounded-2xl bg-[#0f1422]/90 border border-white/[0.08] p-6 flex flex-col justify-between relative overflow-hidden group transition-all duration-300 hover:border-amber-500/40">
+<div class="absolute -top-10 -right-10 w-28 h-28 bg-amber-500/10 rounded-full blur-2xl group-hover:bg-amber-500/20 transition-all duration-300"></div>
+<div class="flex items-center justify-between mb-4">
+<span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Policy Interventions</span>
+<span class="px-2.5 py-0.5 rounded-full text-[11px] font-mono bg-amber-500/15 border border-amber-500/30 text-amber-400 font-medium">GATED</span>
+</div>
+<div>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl lg:text-4xl font-extrabold tracking-tight text-white">4 Blocked</span>
+<span class="text-sm text-slate-400 font-normal">/ 7 Human-Auth</span>
+</div>
+<div class="mt-3 pt-3 border-t border-white/[0.06] flex items-center justify-between text-xs text-slate-400">
+<span>Ceiling: <strong class="text-emerald-400 font-mono" id="kpi-ceiling-val">₹5,000</strong></span>
+<span class="text-amber-400 font-medium">0 Anomaly Leakage</span>
+</div>
+</div>
+</div>
+<!-- KPI 3 -->
+<div class="glow-panel rounded-2xl bg-[#0f1422]/90 border border-white/[0.08] p-6 flex flex-col justify-between relative overflow-hidden group transition-all duration-300 hover:border-cyan-500/40">
+<div class="absolute -top-10 -right-10 w-28 h-28 bg-cyan-500/10 rounded-full blur-2xl group-hover:bg-cyan-500/20 transition-all duration-300"></div>
+<div class="flex items-center justify-between mb-4">
+<span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Deterministic Graph Loop</span>
+<span class="px-2.5 py-0.5 rounded-full text-[11px] font-mono bg-cyan-500/15 border border-cyan-500/30 text-cyan-400 font-medium">SUB-20MS</span>
+</div>
+<div>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl lg:text-4xl font-extrabold tracking-tight text-white">18.4<span class="text-xl text-cyan-400 font-semibold font-mono">ms</span></span>
+<span class="text-xs text-slate-400">Hard-Gated Check</span>
+</div>
+<div class="mt-3 pt-3 border-t border-white/[0.06] flex items-center justify-between text-xs text-slate-400">
+<span>LangGraph Agent State</span>
+<span class="text-emerald-400 font-mono font-medium flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span> GREEN (Idle)
+            </span>
+</div>
+</div>
+</div>
+<!-- KPI 4: Runtime Environment Switcher -->
+<div class="glow-panel rounded-2xl bg-[#0f1422]/90 border border-white/[0.08] p-6 flex flex-col justify-between relative transition-all duration-300 hover:border-slate-600">
+<div class="flex items-center justify-between mb-3">
+<span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Execution Pipeline</span>
+<span class="text-[11px] font-mono text-emerald-400 font-medium">v2.4.0-prod</span>
+</div>
+<div class="grid grid-cols-3 gap-1.5 p-1 bg-slate-950/80 rounded-xl border border-white/[0.06]">
+<button class="py-2 px-2.5 rounded-lg text-xs font-semibold font-mono text-center transition-all duration-200 bg-emerald-500 text-slate-950 shadow-md" id="btn-pipeline-human" onclick="switchPipelineMode('human')">
+            Human
+          </button>
+<button class="py-2 px-2.5 rounded-lg text-xs font-semibold font-mono text-center transition-all duration-200 text-slate-400 hover:text-white hover:bg-slate-800" id="btn-pipeline-a2a" onclick="switchPipelineMode('a2a')">
+            A2A Tool
+          </button>
+<button class="py-2 px-2.5 rounded-lg text-xs font-semibold font-mono text-center transition-all duration-200 text-slate-400 hover:text-white hover:bg-slate-800" id="btn-pipeline-recovery" onclick="switchPipelineMode('recovery')">
+            Recovery
+          </button>
+</div>
+<div class="mt-3 pt-3 border-t border-white/[0.06] flex items-center justify-between text-xs text-slate-400">
+<span>Active Context:</span>
+<strong class="text-emerald-400 font-medium" id="active-pipeline-desc">B2C Conversational</strong>
+</div>
+</div>
+</section>
+<!-- 2. TWO-COLUMN MAIN WORKSPACE (Balanced 7/5 Grid with generous padding & gaps) -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- LEFT COLUMN: PRIMARY BUYER TERMINAL (7 COLS) -->
+<div class="lg:col-span-7 flex flex-col rounded-2xl bg-[#0f1422]/90 border border-white/[0.08] glow-panel overflow-hidden transition-all duration-300">
+<!-- Terminal Header -->
+<div class="px-6 py-4 bg-[#0a0e18] border-b border-white/[0.08] flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-full bg-rose-500/80 inline-block"></span>
+<span class="w-3 h-3 rounded-full bg-amber-500/80 inline-block"></span>
+<span class="w-3 h-3 rounded-full bg-emerald-500/80 inline-block"></span>
+</div>
+<div class="h-4 w-px bg-white/10 mx-1.5"></div>
+<span class="font-mono text-xs text-slate-300 font-medium" id="terminal-session-title">session_usr_9042 // Razorpay Autonomous Terminal</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono font-medium">
+<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+<span>STATE_READY</span>
+</div>
+<button class="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors" onclick="resetConversationStream()" title="Reset Session">
+<span class="material-symbols-outlined text-[18px]">refresh</span>
+</button>
+</div>
+</div>
+<!-- Scenario Quick Preset Chips -->
+<div class="px-6 py-3 bg-[#0d121f]/70 border-b border-white/[0.06] flex items-center gap-2.5 overflow-x-auto scrollbar-none">
+<span class="text-xs uppercase tracking-wider text-slate-400 font-semibold shrink-0 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">bolt</span> Presets:
+          </span>
+<button class="px-3 py-1.5 rounded-lg bg-slate-900 border border-white/[0.08] hover:border-emerald-500/50 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-mono transition-all duration-200 flex items-center gap-1.5" onclick="loadScenario('shoes')">
+<span class="material-symbols-outlined text-emerald-400 text-sm">search</span>
+<span>Running Shoes &lt; ₹3,000 (Size 9)</span>
+</button>
+<button class="px-3 py-1.5 rounded-lg bg-slate-900 border border-white/[0.08] hover:border-amber-500/50 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-mono transition-all duration-200 flex items-center gap-1.5" onclick="loadScenario('ceiling')">
+<span class="material-symbols-outlined text-amber-400 text-sm">gavel</span>
+<span>GPS Watch ₹8,999 (Ceiling Breach)</span>
+</button>
+<button class="px-3 py-1.5 rounded-lg bg-slate-900 border border-white/[0.08] hover:border-rose-500/50 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-mono transition-all duration-200 flex items-center gap-1.5" onclick="loadScenario('decline')">
+<span class="material-symbols-outlined text-rose-400 text-sm">credit_card_off</span>
+<span>Declined Card Recovery</span>
+</button>
+</div>
+<!-- Chat Stream Body -->
+<div class="p-6 md:p-8 flex flex-col gap-6 overflow-y-auto max-h-[580px] min-h-[460px] bg-[#0b101c]/50" id="terminal-stream">
+<!-- Turn 1: Concierge Intro -->
+<div class="flex items-start gap-4 max-w-2xl animate-enter">
+<div class="w-9 h-9 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
+<span class="material-symbols-outlined text-[20px]">smart_toy</span>
+</div>
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center gap-2">
+<span class="text-xs font-bold uppercase tracking-wider text-emerald-400">Concierge Core Agent</span>
+<span class="text-[11px] font-mono text-slate-400">LangGraph Active // RZP Sandbox</span>
+</div>
+<div class="p-4 rounded-2xl bg-slate-900/90 border border-white/[0.07] text-slate-200 text-sm leading-relaxed shadow-sm">
+                Autonomous commerce engine initialized. I enforce deterministic policies with a hard confirmation gate before generating payment tokens. What would you like to acquire today?
+              </div>
+</div>
+</div>
+<!-- Turn 2: Buyer Query -->
+<div class="flex items-start justify-end gap-4 max-w-xl self-end animate-enter">
+<div class="flex flex-col items-end gap-1.5">
+<span class="text-xs font-medium text-slate-400 uppercase tracking-wider">Buyer (Session #9042)</span>
+<div class="p-4 rounded-2xl bg-emerald-950/30 border border-emerald-500/30 text-emerald-100 text-sm leading-relaxed shadow-sm">
+                I need trail running shoes for marathon training, budget under ₹3,000, size 9 UK.
+              </div>
+</div>
+<div class="w-9 h-9 rounded-xl bg-slate-800 border border-white/10 flex items-center justify-center text-slate-200 shrink-0">
+<span class="material-symbols-outlined text-[20px]">person</span>
+</div>
+</div>
+<!-- Turn 3: Agent Analysis & Pre-action Rationale -->
+<div class="flex items-start gap-4 max-w-3xl animate-enter" id="active-agent-flow-container">
+<div class="w-9 h-9 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
+<span class="material-symbols-outlined text-[20px]">bolt</span>
+</div>
+<div class="flex flex-col gap-3 w-full">
+<div class="flex items-center gap-2.5">
+<span class="text-xs font-bold uppercase tracking-wider text-emerald-400">Concierge Engine</span>
+<span class="px-2 py-0.5 rounded text-[11px] font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">EXEC_OK: catalog_search</span>
+</div>
+<!-- Pre-action Rationale Box -->
+<div class="p-4 rounded-xl bg-[#090d17] border border-amber-500/20 font-mono text-xs text-slate-300">
+<div class="flex items-center justify-between text-amber-400 pb-2 border-b border-white/[0.06] mb-2 font-medium">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">psychology</span>
+                    Pre-Action Rationale &amp; Policy Assertions
+                  </span>
+<span class="text-emerald-400 text-[11px] font-semibold">PASSED CEILING (₹2,499 &lt;= ₹5,000)</span>
+</div>
+<p class="text-slate-400 leading-relaxed text-[11px]">
+                  Catalog search query: <span class="text-slate-200 font-mono">running shoes size 9</span>. Found match SKU: <span class="text-cyan-400">RN-APX-09-BLK</span>. Price ₹2,499 satisfies user constraint &lt; ₹3,000 and automated ₹5,000 ceiling. Awaiting user click authorization per Rule 2 (Confirm-Before-Charge).
+                </p>
+</div>
+<!-- Sleek Product Checkout Card -->
+<div class="rounded-2xl bg-gradient-to-b from-[#111728] to-[#0c101d] border border-white/10 p-5 shadow-xl flex flex-col sm:flex-row gap-5 hover:border-emerald-500/40 transition-all duration-300">
+<div class="w-full sm:w-40 h-36 rounded-xl bg-slate-950 overflow-hidden relative shrink-0 border border-white/[0.08]">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Futuristic black and emerald trail running shoe in dark ambient neon studio" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUIIFA4CTrxUwxe7nsYlPBV2pHCLToy7DnAglQWhluIi0vwPxDroeHyyJbkvi89tyApmozzc0fSBBrY018wHkjHEWFvW8xaPsuufWfEL5nVo-9H3iEgMiQF7nJZZPGksD9mlyfMPdZxGK1rwO_Pzhmy_VVXKBFpMiq8KyIyRgT2fOBHOo05CiIMq6-X6TuFahx_mquaxqqdCKz4-Z29iiIWjIHGHVEiIFbv000RubqbbV-yJDJOYaWQA"/>
+<div class="absolute top-2 left-2 px-2 py-0.5 rounded-md bg-black/80 backdrop-blur-sm text-emerald-400 text-[10px] font-mono font-semibold border border-emerald-500/30">
+                    STOCK: 8 PAIRS
+                  </div>
+</div>
+<div class="flex flex-col justify-between flex-1 min-w-0">
+<div>
+<div class="flex items-start justify-between gap-2">
+<div>
+<h4 class="text-lg font-bold text-white tracking-tight font-sans">Apex Glide 9 Pro</h4>
+<span class="text-xs font-mono text-slate-400">SKU: RN-APX-09-BLK // Carbon Plate</span>
+</div>
+<span class="text-2xl font-black text-emerald-400 font-mono">₹2,499</span>
+</div>
+<p class="text-xs text-slate-400 mt-2 leading-relaxed">
+                      Trail-optimized Vibram outsole, dual-density responsive foam, UK 9 standard fit. Verified express 24h fulfillment.
+                    </p>
+</div>
+<div class="flex items-center gap-3 mt-4 pt-3 border-t border-white/[0.07]">
+<button class="flex-1 py-2.5 px-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition-all duration-200 flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(16,185,129,0.25)] hover:shadow-[0_0_25px_rgba(16,185,129,0.4)]" onclick="openCheckoutModal('Apex Glide 9 Pro', 'RN-APX-09-BLK', 2499)">
+<span class="material-symbols-outlined text-[17px]">lock_open</span>
+<span>Authorize &amp; Pay ₹2,499</span>
+</button>
+<button class="py-2.5 px-3.5 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 border border-white/[0.08] text-slate-300 hover:text-white text-xs font-mono transition-colors" onclick="inspectPayload('RN-APX-09-BLK', 2499)">
+                      Payload
+                    </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Chat Input Bar -->
+<div class="p-5 md:p-6 bg-[#0a0e18] border-t border-white/[0.08]">
+<form class="flex items-center gap-3" onsubmit="handleChatSubmit(event)">
+<div class="relative flex-1">
+<input class="w-full pl-4 pr-20 py-3 rounded-xl bg-slate-900 border border-white/10 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-500/60 focus:ring-1 focus:ring-emerald-500/60 transition-all font-sans" id="chat-input" placeholder="Instruct Concierge (e.g. 'Order running shoes under ₹3000 size 9')..." type="text"/>
+<div class="absolute right-3 top-3 px-2 py-0.5 rounded bg-slate-800 text-[10px] font-mono text-slate-400 font-semibold border border-white/5">
+                RETURN
+              </div>
+</div>
+<button class="px-5 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition-all duration-200 flex items-center gap-1.5 shadow-[0_0_15px_rgba(16,185,129,0.2)] shrink-0" type="submit">
+<span class="material-symbols-outlined text-base">send</span>
+<span class="hidden sm:inline">Dispatch</span>
+</button>
+</form>
+</div>
+</div>
+<!-- RIGHT COLUMN: SPLIT INTO 2 STACKED CARDS (5 COLS) -->
+<div class="lg:col-span-5 flex flex-col gap-8">
+<!-- CARD 1: POLICY MIDDLEWARE GUARDRAILS -->
+<div class="rounded-2xl bg-[#0f1422]/90 border border-white/[0.08] glow-panel p-6 md:p-7 flex flex-col gap-6 transition-all duration-300">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+<span class="material-symbols-outlined text-lg">shield</span>
+</div>
+<div>
+<h3 class="text-base font-bold text-white tracking-tight font-sans">Policy Middleware Guardrails</h3>
+<p class="text-xs text-slate-400">Deterministic Pre-flight Verification</p>
+</div>
+</div>
+<span class="px-2.5 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 text-[11px] font-mono font-semibold">STRICT</span>
+</div>
+<div class="flex flex-col gap-4">
+<!-- Rule 1: Max Spend Ceiling Slider -->
+<div class="p-4 rounded-xl bg-[#0a0e18] border border-white/[0.06] flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<span class="text-xs font-semibold text-slate-200 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-emerald-400 text-[16px]">payments</span>
+                  Max Spend Ceiling (Auto-Pay)
+                </span>
+<span class="text-sm font-bold font-mono text-emerald-400" id="guardrail-slider-val">₹5,000</span>
+</div>
+<input class="w-full accent-emerald-500 h-1.5 bg-slate-800 rounded-lg cursor-pointer transition-all" max="15000" min="1000" oninput="handleCeilingChange(this.value)" step="500" type="range" value="5000"/>
+<div class="flex justify-between text-[11px] font-mono text-slate-400">
+<span>₹1,000 (Conservative)</span>
+<span>₹15,000 (Permissive)</span>
+</div>
+</div>
+<!-- Rule 2: Hard Confirm-Before-Charge -->
+<div class="p-3.5 rounded-xl bg-[#0a0e18] border border-white/[0.06] flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-xs font-semibold text-slate-200">Rule 2: Hard Confirm-Before-Charge</span>
+<span class="text-[11px] text-slate-400">Blocks payment tokens without cryptographic click auth</span>
+</div>
+<span class="px-2 py-0.5 rounded bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 text-[11px] font-mono font-bold">ENFORCED</span>
+</div>
+<!-- Rule 3: Anti-Anomaly & Negative Price Check -->
+<div class="p-3.5 rounded-xl bg-[#0a0e18] border border-white/[0.06] flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-xs font-semibold text-slate-200">Rule 3: Catalog Negative Price Filter</span>
+<span class="text-[11px] text-slate-400">Rejects price ≤ 0, NaN values, &amp; unindexed SKUs</span>
+</div>
+<span class="px-2 py-0.5 rounded bg-cyan-500/15 border border-cyan-500/30 text-cyan-400 text-[11px] font-mono font-bold">ACTIVE</span>
+</div>
+<!-- Rule 4: Scripted Failure & Recovery State -->
+<div class="p-3.5 rounded-xl bg-[#0a0e18] border border-white/[0.06] flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-xs font-semibold text-slate-200">Rule 4: Autonomous Failure Protocol</span>
+<span class="text-[11px] text-slate-400">Card decline → Instant UPI fallback or Human hand-off</span>
+</div>
+<span class="px-2 py-0.5 rounded bg-amber-500/15 border border-amber-500/30 text-amber-400 text-[11px] font-mono font-bold">STANDBY</span>
+</div>
+</div>
+</div>
+<!-- CARD 2: LANGGRAPH EXECUTION STREAM & TOOL PIPELINE -->
+<div class="rounded-2xl bg-[#0f1422]/90 border border-white/[0.08] glow-panel p-6 md:p-7 flex flex-col gap-5 transition-all duration-300">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400">
+<span class="material-symbols-outlined text-lg">account_tree</span>
+</div>
+<div>
+<h3 class="text-base font-bold text-white tracking-tight font-sans">LangGraph Tool Execution</h3>
+<p class="text-xs text-slate-400">Active Node Flow</p>
+</div>
+</div>
+<span class="text-xs font-mono text-cyan-400 font-medium px-2 py-0.5 rounded bg-cyan-500/10 border border-cyan-500/20" id="tool-trace-badge">TRC: #8924_c8f</span>
+</div>
+<!-- Pipeline Node Flow Diagram -->
+<div class="grid grid-cols-5 gap-1.5 text-center font-mono text-[11px]">
+<div class="py-1.5 px-1 rounded-lg bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-semibold transition-all" id="node-catalog">catalog_search</div>
+<div class="py-1.5 px-1 rounded-lg bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-semibold transition-all" id="node-policy">policy_check</div>
+<div class="py-1.5 px-1 rounded-lg bg-slate-900 text-slate-400 border border-white/[0.06] transition-all" id="node-order">create_order</div>
+<div class="py-1.5 px-1 rounded-lg bg-slate-900 text-slate-400 border border-white/[0.06] transition-all" id="node-pay">rzp_payment</div>
+<div class="py-1.5 px-1 rounded-lg bg-slate-900 text-slate-400 border border-white/[0.06] transition-all" id="node-audit">audit_sync</div>
+</div>
+<!-- Animated Terminal Log Lines -->
+<div class="rounded-xl bg-[#090d16] border border-white/[0.06] p-4 font-mono text-xs max-h-52 overflow-y-auto flex flex-col gap-2" id="tool-inspector-content">
+<div class="text-slate-400 leading-relaxed">
+<span class="text-cyan-400">[00:00:14.281]</span> <span class="text-emerald-400 font-semibold">tool_invoke:</span> catalog_search({"query": "running shoes size 9", "max_price": 3000})<br/>
+<span class="text-cyan-400">[00:00:14.302]</span> <span class="text-emerald-300">← catalog return:</span> 1 matches found [SKU: RN-APX-09-BLK, ₹2,499, Stock: 8]<br/>
+<span class="text-cyan-400">[00:00:14.312]</span> <span class="text-amber-400 font-semibold">guardrail_eval:</span> policy_check({"sku": "RN-APX-09-BLK", "amount": 2499, "ceiling": 5000})<br/>
+<span class="text-cyan-400">[00:00:14.318]</span> <span class="text-emerald-400 font-bold">← verdict:</span> ALLOW (Amount ≤ ₹5,000 ceiling. Gated on buyer confirmation).
+            </div>
+</div>
+<div class="flex items-center justify-between text-[11px] font-mono text-slate-400 pt-1 border-t border-white/[0.06]">
+<span>MemorySaver: State Checkpoint Saved</span>
+<span class="text-emerald-400 font-medium">HMAC SHA-256 Validated</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. BOTTOM SECTION: VERIFIABLE APPEND-ONLY AUDIT LEDGER (Spacious Full Width) -->
+<section class="rounded-2xl bg-[#0f1422]/90 border border-white/[0.08] glow-panel p-6 md:p-8 flex flex-col gap-6 transition-all duration-300">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+<span class="material-symbols-outlined text-lg">history_edu</span>
+</div>
+<h3 class="text-lg font-bold text-white tracking-tight font-sans">Verifiable Append-Only Audit Ledger</h3>
+<span class="px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[11px] font-mono uppercase">BigQuery Sync: OK</span>
+</div>
+<p class="text-xs text-slate-400 mt-1">
+            Cryptographically signed settlement events, tool invocations, and pre-action rationales for regulatory verification.
+          </p>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-3.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 border border-white/[0.08] hover:border-slate-700 text-slate-200 text-xs font-mono font-medium transition-all duration-200 flex items-center gap-2" onclick="downloadAuditJsonl()">
+<span class="material-symbols-outlined text-sm">download</span>
+<span>Export JSONL</span>
+</button>
+<button class="px-3.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 border border-white/[0.08] hover:border-cyan-500/40 text-slate-200 text-xs font-mono font-medium transition-all duration-200 flex items-center gap-2" onclick="forceLedgerTick()">
+<span class="material-symbols-outlined text-cyan-400 text-sm">refresh</span>
+<span>Force Ledger Ping</span>
+</button>
+</div>
+</div>
+<!-- Ledger Table with generous row padding & hover highlights -->
+<div class="w-full overflow-x-auto rounded-xl border border-white/[0.06] bg-[#090d16]">
+<table class="w-full text-left font-mono text-xs">
+<thead class="bg-slate-900/90 text-slate-400 uppercase tracking-wider text-[11px] border-b border-white/[0.08]">
+<tr>
+<th class="py-3.5 px-4 font-semibold">Timestamp</th>
+<th class="py-3.5 px-4 font-semibold">Trace ID</th>
+<th class="py-3.5 px-4 font-semibold">Buyer Mode</th>
+<th class="py-3.5 px-4 font-semibold">Tool Executed</th>
+<th class="py-3.5 px-4 font-semibold">Amount</th>
+<th class="py-3.5 px-4 font-semibold">Razorpay Ref</th>
+<th class="py-3.5 px-4 font-semibold">Guardrail Verdict</th>
+<th class="py-3.5 px-4 font-semibold text-right">Action / Proof</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-white/[0.04] text-slate-300" id="ledger-body-rows">
+<!-- Row 1 -->
+<tr class="hover:bg-slate-800/40 transition-colors duration-150">
+<td class="py-3.5 px-4 text-slate-400">14:28:44.102</td>
+<td class="py-3.5 px-4 text-cyan-400">trc_9042_c8f</td>
+<td class="py-3.5 px-4"><span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 text-[10px]">Human Interactive</span></td>
+<td class="py-3.5 px-4 text-white font-semibold">create_payment_link</td>
+<td class="py-3.5 px-4 font-bold text-white">₹2,499.00</td>
+<td class="py-3.5 px-4 text-slate-400">plink_P8k91jLa0</td>
+<td class="py-3.5 px-4"><span class="px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-400 font-semibold text-[10px]">PASSED (≤ 5K)</span></td>
+<td class="py-3.5 px-4 text-right">
+<button class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-emerald-400 hover:text-emerald-300 text-[11px] transition-colors" onclick="viewProofModal('trc_9042_c8f', 'Verified Apex Glide 9 Pro UK 9 SKU. Human signed off on ₹2,499 with Razorpay Sandbox.')">Inspect Proof</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-slate-800/40 transition-colors duration-150">
+<td class="py-3.5 px-4 text-slate-400">14:24:19.419</td>
+<td class="py-3.5 px-4 text-cyan-400">trc_8831_12a</td>
+<td class="py-3.5 px-4"><span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 text-[10px]">Human Interactive</span></td>
+<td class="py-3.5 px-4 text-white font-semibold">policy_check</td>
+<td class="py-3.5 px-4 font-bold text-rose-400">₹8,999.00</td>
+<td class="py-3.5 px-4 text-slate-500">RZP_BLOCKED_LOCAL</td>
+<td class="py-3.5 px-4"><span class="px-2 py-0.5 rounded bg-rose-500/15 text-rose-400 font-semibold text-[10px]">GATED (EXCEEDS ₹5,000)</span></td>
+<td class="py-3.5 px-4 text-right">
+<button class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-amber-400 hover:text-amber-300 text-[11px] transition-colors" onclick="viewProofModal('trc_8831_12a', 'BLOCKED: GPS Watch price ₹8,999 breached configured ceiling limit.')">Inspect Proof</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-slate-800/40 transition-colors duration-150">
+<td class="py-3.5 px-4 text-slate-400">14:19:02.834</td>
+<td class="py-3.5 px-4 text-cyan-400">trc_7709_98x</td>
+<td class="py-3.5 px-4"><span class="px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 text-[10px]">A2A Protocol</span></td>
+<td class="py-3.5 px-4 text-white font-semibold">create_order</td>
+<td class="py-3.5 px-4 font-bold text-white">₹1,850.00</td>
+<td class="py-3.5 px-4 text-slate-400">order_NuP09x99a</td>
+<td class="py-3.5 px-4"><span class="px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-400 font-semibold text-[10px]">PASSED</span></td>
+<td class="py-3.5 px-4 text-right">
+<button class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-emerald-400 hover:text-emerald-300 text-[11px] transition-colors" onclick="viewProofModal('trc_7709_98x', 'M2M Autonomous Procurement: Hydration Belt pack 500ml.')">Inspect Proof</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</main>
+<!-- ================= FOOTER ================= -->
+<footer class="w-full bg-[#070a12] border-t border-white/[0.06] py-5 mt-10">
+<div class="max-w-[1720px] mx-auto px-6 lg:px-10 flex flex-col md:flex-row items-center justify-between gap-3 text-xs font-mono text-slate-400">
+<div class="flex items-center gap-4">
+<span class="text-emerald-400 font-semibold">CONCIERGE OS v2.4.0</span>
+<span>•</span>
+<span>Deterministic State Machine</span>
+<span>•</span>
+<span>LangGraph Checkpointer: MemorySaver()</span>
+</div>
+<div class="flex items-center gap-4">
+<span>Razorpay API v1/payment_links</span>
+<span>•</span>
+<span>BigQuery Append Ledger: SYNCED</span>
+<span>•</span>
+<span class="text-emerald-400">HMAC SHA-256 Validated</span>
+</div>
+</div>
+</footer>
+<!-- ================= MODAL: RAZORPAY TEST SIMULATOR ================= -->
+<div class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center hidden p-4 animate-enter" id="checkout-modal">
+<div class="w-full max-w-md bg-[#0f1422] border border-white/10 rounded-2xl shadow-2xl overflow-hidden">
+<div class="px-6 py-4 bg-[#090d16] border-b border-white/[0.08] flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-7 h-7 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center">
+<span class="material-symbols-outlined text-[17px]">credit_card</span>
+</div>
+<div>
+<h4 class="text-sm font-bold text-white font-sans">Razorpay Checkout Sandbox</h4>
+<span class="text-[10px] font-mono text-cyan-400 font-semibold uppercase">API Test Mode Active</span>
+</div>
+</div>
+<button class="text-slate-400 hover:text-white p-1" onclick="closeCheckoutModal()">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="p-6 flex flex-col gap-5">
+<div class="p-4 rounded-xl bg-slate-900 border border-white/[0.06] flex items-center justify-between">
+<div>
+<div class="text-sm font-bold text-white font-sans" id="modal-item-name">Apex Glide 9 Pro</div>
+<div class="text-xs font-mono text-slate-400" id="modal-sku-tag">SKU: RN-APX-09-BLK</div>
+</div>
+<div class="text-xl font-bold font-mono text-emerald-400" id="modal-item-price">₹2,499.00</div>
+</div>
+<div class="flex flex-col gap-2.5">
+<span class="text-xs uppercase tracking-wider text-slate-400 font-semibold">Simulate Gateway Outcome:</span>
+<button class="w-full py-3 px-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-between shadow-[0_0_15px_rgba(16,185,129,0.25)]" onclick="executePaymentResult('SUCCESS')">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-base">verified</span>
+<span>1-Click Test Authorization (200 OK)</span>
+</span>
+<span class="font-mono text-[11px]">SUCCESS</span>
+</button>
+<button class="w-full py-3 px-4 rounded-xl bg-rose-500/20 hover:bg-rose-500/30 border border-rose-500/40 text-rose-300 font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-between" onclick="executePaymentResult('DECLINED')">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-base">credit_card_off</span>
+<span>Declined Card (Failure &amp; Recovery Flow)</span>
+</span>
+<span class="font-mono text-[11px]">402 REJECT</span>
+</button>
+<button class="w-full py-3 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold text-xs uppercase tracking-wider transition-all flex items-center justify-between" onclick="executePaymentResult('TIMEOUT')">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-base">timer_off</span>
+<span>Gateway Issuer Timeout (504 Idempotent)</span>
+</span>
+<span class="font-mono text-[11px]">504 TIMEOUT</span>
+</button>
+</div>
+<div class="text-[11px] font-mono text-slate-400 text-center pt-2 border-t border-white/[0.06]">
+          Guardrail pre-flight verified. HMAC signature will be written to append ledger.
+        </div>
+</div>
+</div>
+</div>
+<!-- ================= MODAL: PROOF & PAYLOAD INSPECTOR ================= -->
+<div class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center hidden p-4 animate-enter" id="proof-modal">
+<div class="w-full max-w-xl bg-[#0f1422] border border-white/10 rounded-2xl shadow-2xl overflow-hidden">
+<div class="px-6 py-4 bg-[#090d16] border-b border-white/[0.08] flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-emerald-400">verified_user</span>
+<span class="text-sm font-bold text-white font-sans">Pre-Action Verification Proof &amp; Payload</span>
+</div>
+<button class="text-slate-400 hover:text-white p-1" onclick="closeProofModal()">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="p-6 flex flex-col gap-4">
+<div class="flex items-center justify-between text-xs font-mono">
+<span class="text-cyan-400" id="proof-trace-tag">TRC: #trc_9042_c8f</span>
+<span class="text-emerald-400 font-semibold">SIG: verified_deterministic_hmac</span>
+</div>
+<div class="p-4 rounded-xl bg-[#070a12] border border-white/[0.06] text-emerald-400 font-mono text-xs max-h-64 overflow-y-auto whitespace-pre-wrap leading-relaxed" id="proof-content-box">
+          { "state": "ANALYSIS_COMPLETE" }
+        </div>
+<button class="w-full py-2.5 bg-slate-800 hover:bg-slate-700 rounded-xl text-slate-200 text-xs font-semibold uppercase tracking-wider transition-colors" onclick="closeProofModal()">
+          Dismiss
+        </button>
+</div>
+</div>
+</div>
+<!-- ================= INTERACTIVE SCRIPT LOGIC ================= -->
+<script>
+    let currentSpendCeiling = 5000;
+    let activeMode = 'human';
+    let currentOrder = { name: 'Apex Glide 9 Pro', sku: 'RN-APX-09-BLK', price: 2499 };
+
+    function switchPipelineMode(mode) {
+      activeMode = mode;
+      const bHuman = document.getElementById('btn-pipeline-human');
+      const bA2a = document.getElementById('btn-pipeline-a2a');
+      const bRecovery = document.getElementById('btn-pipeline-recovery');
+      const desc = document.getElementById('active-pipeline-desc');
+
+      // Reset styles
+      [bHuman, bA2a, bRecovery].forEach(b => {
+        b.className = 'py-2 px-2.5 rounded-lg text-xs font-semibold font-mono text-center transition-all duration-200 text-slate-400 hover:text-white hover:bg-slate-800';
+      });
+
+      if (mode === 'human') {
+        bHuman.className = 'py-2 px-2.5 rounded-lg text-xs font-semibold font-mono text-center transition-all duration-200 bg-emerald-500 text-slate-950 shadow-md';
+        desc.innerText = 'B2C Conversational';
+        document.getElementById('terminal-session-title').innerText = 'session_usr_9042 // Razorpay Autonomous Terminal';
+      } else if (mode === 'a2a') {
+        bA2a.className = 'py-2 px-2.5 rounded-lg text-xs font-semibold font-mono text-center transition-all duration-200 bg-cyan-500 text-slate-950 shadow-md';
+        desc.innerText = 'M2M Structured Stream';
+        document.getElementById('terminal-session-title').innerText = 'a2a_peer_agent_rpc // JSON-RPC 2.0 Terminal';
+        renderA2ADisplay();
+      } else if (mode === 'recovery') {
+        bRecovery.className = 'py-2 px-2.5 rounded-lg text-xs font-semibold font-mono text-center transition-all duration-200 bg-rose-500 text-white shadow-md';
+        desc.innerText = 'Card Declined Recovery';
+        document.getElementById('terminal-session-title').innerText = 'exception_handler // Razorpay Fallback Recovery';
+        loadScenario('decline');
+      }
+    }
+
+    function handleCeilingChange(val) {
+      currentSpendCeiling = parseInt(val, 10);
+      const formatted = '₹' + currentSpendCeiling.toLocaleString('en-IN');
+      document.getElementById('guardrail-slider-val').innerText = formatted;
+      document.getElementById('kpi-ceiling-val').innerText = formatted;
+      document.getElementById('top-guardrail-status').innerText = `${formatted} Hard Limit`;
+      logToolExecution('guardrail_threshold_update', { new_ceiling: currentSpendCeiling }, 'APPLIED_OK');
+    }
+
+    function loadScenario(type) {
+      if (type === 'shoes') {
+        switchPipelineMode('human');
+        appendBuyerMessage("Find running shoes under ₹3000, size 9 UK");
+        simulateAgentWork(() => {
+          appendAgentRationale("Search running shoes: Identified Apex Glide 9 Pro (₹2,499). Checks passed: ₹2,499 <= ₹" + currentSpendCeiling.toLocaleString('en-IN') + " spend ceiling. Standby for buyer confirmation.");
+          appendProductCard('Apex Glide 9 Pro', 'RN-APX-09-BLK', 2499, 'Trail-optimized Vibram outsole, dual-density responsive foam, UK 9 standard fit.');
+          logToolExecution('catalog_search', { query: 'running shoes size 9', max_price: 3000 }, 'Apex Glide 9 Pro (₹2,499)');
+        });
+      } else if (type === 'ceiling') {
+        switchPipelineMode('human');
+        appendBuyerMessage("Buy Apex Pro GPS Watch with express dispatch for ₹8,999");
+        simulateAgentWork(() => {
+          appendAgentRationale(`CRITICAL POLICY VIOLATION: Item price ₹8,999 exceeds current automated guardrail ceiling (₹${currentSpendCeiling.toLocaleString('en-IN')}). Hard policy gate intercepted order.`);
+          appendSystemAlert("GUARDRAIL CEILING BREACH", `Transaction of ₹8,999.00 has been blocked. Current autonomous spend ceiling is configured to ₹${currentSpendCeiling.toLocaleString('en-IN')}. Adjust the ceiling slider above or choose an eligible product.`);
+          logToolExecution('policy_check', { sku: 'WATCH-GPS-PRO', amount: 8999, ceiling: currentSpendCeiling }, 'BLOCKED_POLICY_BREACH');
+          appendLedgerRow('Human Interactive', 'policy_check', 8999, 'RZP_BLOCKED_LOCAL', 'GATED (EXCEEDS CEILING)');
+        });
+      } else if (type === 'decline') {
+        openCheckoutModal('Apex Glide 9 Pro', 'RN-APX-09-BLK', 2499);
+      }
+    }
+
+    function appendBuyerMessage(text) {
+      const stream = document.getElementById('terminal-stream');
+      const div = document.createElement('div');
+      div.className = "flex items-start justify-end gap-4 max-w-xl self-end animate-enter";
+      div.innerHTML = `
+        <div class="flex flex-col items-end gap-1.5">
+          <span class="text-xs font-medium text-slate-400 uppercase tracking-wider">Buyer (Session #9042)</span>
+          <div class="p-4 rounded-2xl bg-emerald-950/30 border border-emerald-500/30 text-emerald-100 text-sm leading-relaxed shadow-sm">
+            ${escapeHtml(text)}
+          </div>
+        </div>
+        <div class="w-9 h-9 rounded-xl bg-slate-800 border border-white/10 flex items-center justify-center text-slate-200 shrink-0">
+          <span class="material-symbols-outlined text-[20px]">person</span>
+        </div>
+      `;
+      stream.appendChild(div);
+      stream.scrollTop = stream.scrollHeight;
+    }
+
+    function appendAgentRationale(rationaleText) {
+      const stream = document.getElementById('terminal-stream');
+      const div = document.createElement('div');
+      div.className = "flex items-start gap-4 max-w-3xl animate-enter";
+      div.innerHTML = `
+        <div class="w-9 h-9 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
+          <span class="material-symbols-outlined text-[20px]">psychology</span>
+        </div>
+        <div class="flex flex-col gap-1 w-full">
+          <span class="text-xs font-bold uppercase tracking-wider text-emerald-400">Agent Pre-Action Rationale</span>
+          <div class="p-3.5 rounded-xl bg-[#090d17] border border-white/[0.06] font-mono text-[11px] text-slate-300 leading-relaxed">
+            ${escapeHtml(rationaleText)}
+          </div>
+        </div>
+      `;
+      stream.appendChild(div);
+      stream.scrollTop = stream.scrollHeight;
+    }
+
+    function appendProductCard(name, sku, price, desc) {
+      const stream = document.getElementById('terminal-stream');
+      const div = document.createElement('div');
+      div.className = "flex items-start gap-4 max-w-3xl animate-enter";
+      div.innerHTML = `
+        <div class="w-9 h-9 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
+          <span class="material-symbols-outlined text-[20px]">shopping_bag</span>
+        </div>
+        <div class="flex flex-col gap-3 w-full">
+          <div class="rounded-2xl bg-gradient-to-b from-[#111728] to-[#0c101d] border border-white/10 p-5 shadow-xl flex flex-col sm:flex-row gap-5 hover:border-emerald-500/40 transition-all duration-300">
+            <div class="w-full sm:w-40 h-36 rounded-xl bg-slate-950 overflow-hidden relative shrink-0 border border-white/[0.08]">
+              <img class="w-full h-full object-cover" data-alt="Futuristic black and emerald trail running shoe suspended in an ambient dark neon studio with sharp athletic design lines and dynamic cyber-fintech lighting accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUIIFA4CTrxUwxe7nsYlPBV2pHCLToy7DnAglQWhluIi0vwPxDroeHyyJbkvi89tyApmozzc0fSBBrY018wHkjHEWFvW8xaPsuufWfEL5nVo-9H3iEgMiQF7nJZZPGksD9mlyfMPdZxGK1rwO_Pzhmy_VVXKBFpMiq8KyIyRgT2fOBHOo05CiIMq6-X6TuFahx_mquaxqqdCKz4-Z29iiIWjIHGHVEiIFbv000RubqbbV-yJDJOYaWQA">
+              <div class="absolute top-2 left-2 px-2 py-0.5 rounded-md bg-black/80 backdrop-blur-sm text-emerald-400 text-[10px] font-mono font-semibold border border-emerald-500/30">
+                VALIDATED SKU
+              </div>
+            </div>
+
+            <div class="flex flex-col justify-between flex-1 min-w-0">
+              <div>
+                <div class="flex items-start justify-between gap-2">
+                  <div>
+                    <h4 class="text-lg font-bold text-white tracking-tight font-sans">${escapeHtml(name)}</h4>
+                    <span class="text-xs font-mono text-slate-400">SKU: ${escapeHtml(sku)}</span>
+                  </div>
+                  <span class="text-2xl font-black text-emerald-400 font-mono">₹${price.toLocaleString('en-IN')}</span>
+                </div>
+                <p class="text-xs text-slate-400 mt-2 leading-relaxed">${escapeHtml(desc)}</p>
+              </div>
+
+              <div class="flex items-center gap-3 mt-4 pt-3 border-t border-white/[0.07]">
+                <button onclick="openCheckoutModal('${name}', '${sku}', ${price})" class="flex-1 py-2.5 px-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition-all duration-200 flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(16,185,129,0.25)]">
+                  <span class="material-symbols-outlined text-[17px]">lock_open</span>
+                  <span>Authorize &amp; Pay ₹${price.toLocaleString('en-IN')}</span>
+                </button>
+                <button onclick="inspectPayload('${sku}', ${price})" class="py-2.5 px-3.5 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 border border-white/[0.08] text-slate-300 hover:text-white text-xs font-mono transition-colors">
+                  Payload
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+      stream.appendChild(div);
+      stream.scrollTop = stream.scrollHeight;
+    }
+
+    function appendSystemAlert(title, msg) {
+      const stream = document.getElementById('terminal-stream');
+      const div = document.createElement('div');
+      div.className = "flex items-start gap-4 max-w-3xl animate-enter";
+      div.innerHTML = `
+        <div class="w-9 h-9 rounded-xl bg-rose-500/20 border border-rose-500/40 flex items-center justify-center text-rose-400 shrink-0">
+          <span class="material-symbols-outlined text-[20px]">gavel</span>
+        </div>
+        <div class="flex flex-col gap-1 w-full">
+          <span class="text-xs font-bold uppercase tracking-wider text-rose-400 font-mono">${escapeHtml(title)}</span>
+          <div class="p-4 rounded-2xl bg-rose-500/10 border border-rose-500/30 text-rose-200 text-sm leading-relaxed shadow-sm">
+            ${escapeHtml(msg)}
+          </div>
+        </div>
+      `;
+      stream.appendChild(div);
+      stream.scrollTop = stream.scrollHeight;
+    }
+
+    function simulateAgentWork(callback) {
+      const stream = document.getElementById('terminal-stream');
+      const typing = document.createElement('div');
+      typing.id = 'agent-working-indicator';
+      typing.className = 'flex items-center gap-2.5 text-xs font-mono text-slate-400 py-2 animate-pulse';
+      typing.innerHTML = `
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+        <span>LangGraph agent checking policy constraints...</span>
+      `;
+      stream.appendChild(typing);
+      stream.scrollTop = stream.scrollHeight;
+
+      setTimeout(() => {
+        const ind = document.getElementById('agent-working-indicator');
+        if (ind) ind.remove();
+        callback();
+      }, 450);
+    }
+
+    function handleChatSubmit(e) {
+      e.preventDefault();
+      const input = document.getElementById('chat-input');
+      const val = input.value.trim();
+      if (!val) return;
+      appendBuyerMessage(val);
+      input.value = '';
+
+      simulateAgentWork(() => {
+        if (val.toLowerCase().includes('watch') || val.toLowerCase().includes('8000') || val.toLowerCase().includes('8999')) {
+          loadScenario('ceiling');
+        } else if (val.toLowerCase().includes('decline') || val.toLowerCase().includes('fail')) {
+          loadScenario('decline');
+        } else {
+          appendAgentRationale(`Processed buyer intent: "${val}". Matched catalog inventory items within policy limits.`);
+          appendProductCard('Apex Glide 9 Pro', 'RN-APX-09-BLK', 2499, 'Trail-optimized grip, responsive dual-foam mid-sole, UK 9 standard fit.');
+          logToolExecution('conversational_intent', { intent: val }, 'PROCESSED_OK');
+        }
+      });
+    }
+
+    function renderA2ADisplay() {
+      const stream = document.getElementById('terminal-stream');
+      stream.innerHTML = `
+        <div class="flex flex-col gap-4 font-mono text-xs animate-enter">
+          <div class="flex items-center justify-between text-cyan-400 pb-2 border-b border-white/[0.08]">
+            <span class="font-bold flex items-center gap-2">
+              <span class="material-symbols-outlined text-base">hub</span>
+              A2A JSON-RPC 2.0 Machine Negotiation Channel
+            </span>
+            <span class="text-slate-400 text-[11px]">DIALECT: MCP / A2A-v1</span>
+          </div>
+
+          <div class="p-4 rounded-xl bg-[#090d16] border border-white/[0.06] text-slate-300">
+            <span class="text-cyan-400 font-semibold">// Incoming Agent-to-Agent Introspection</span><br>
+            <span class="text-emerald-400">POST</span> /a2a/v1/checkout/session HTTP/2<br>
+            Host: concierge.acme.internal<br>
+            X-Agent-Signature: 0x9f8b72a...890a<br><br>
+            <pre class="text-slate-300 leading-relaxed">{
+  "jsonrpc": "2.0",
+  "method": "execute_procurement",
+  "params": {
+    "target_sku": "RN-APX-09-BLK",
+    "quantity": 1,
+    "max_authorized_ceiling": ${currentSpendCeiling},
+    "currency": "INR",
+    "webhook_return": "https://buyer-agent.internal/cb"
+  },
+  "id": "req-98234-a2a"
+}</pre>
+          </div>
+
+          <div class="p-3.5 rounded-xl bg-slate-900 border border-white/[0.06] text-emerald-400 text-[11px]">
+            &gt;&gt; Concierge Graph Engine: Verified catalog signature. Guardrail Ceiling (₹${currentSpendCeiling.toLocaleString('en-IN')}) verified VALID.
+          </div>
+
+          <div class="flex items-center gap-3">
+            <button onclick="openCheckoutModal('Apex Glide 9 Pro', 'RN-APX-09-BLK', 2499)" class="px-4 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition-all">
+              Execute A2A Razorpay Settlement
+            </button>
+            <button onclick="switchPipelineMode('human')" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-mono transition-all">
+              Return to Human Buyer
+            </button>
+          </div>
+        </div>
+      `;
+      logToolExecution('a2a_dispatch', { method: 'execute_procurement', id: 'req-98234-a2a' }, 'CHANNEL_OPEN');
+    }
+
+    function openCheckoutModal(name, sku, price) {
+      currentOrder = { name, sku, price };
+      document.getElementById('modal-item-name').innerText = name;
+      document.getElementById('modal-sku-tag').innerText = 'SKU: ' + sku;
+      document.getElementById('modal-item-price').innerText = '₹' + price.toLocaleString('en-IN') + '.00';
+      document.getElementById('checkout-modal').classList.remove('hidden');
+    }
+
+    function closeCheckoutModal() {
+      document.getElementById('checkout-modal').classList.add('hidden');
+    }
+
+    function executePaymentResult(status) {
+      closeCheckoutModal();
+      const stream = document.getElementById('terminal-stream');
+
+      if (status === 'SUCCESS') {
+        appendAgentRationale("Razorpay event 'payment.authorized' captured with valid webhook signature. Dispatched confirmation token.");
+        const div = document.createElement('div');
+        div.className = "flex items-start gap-4 max-w-3xl animate-enter";
+        div.innerHTML = `
+          <div class="w-9 h-9 rounded-xl bg-emerald-500 text-slate-950 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(16,185,129,0.4)]">
+            <span class="material-symbols-outlined text-[20px]">check_circle</span>
+          </div>
+          <div class="flex flex-col gap-1 w-full">
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-400 font-mono">Checkout Settled // Razorpay Sandbox</span>
+            <div class="p-4 rounded-2xl bg-slate-900 border border-emerald-500/30 text-white shadow-lg">
+              <p class="font-bold text-emerald-400 text-base">Payment of ₹${currentOrder.price.toLocaleString('en-IN')} confirmed!</p>
+              <p class="text-xs font-mono text-slate-400 mt-2">
+                Razorpay ID: <span class="text-cyan-400">pay_test_${Math.random().toString(36).substring(2, 8)}</span><br>
+                SKU: <span class="text-white">${currentOrder.sku}</span> | Express Dispatch Scheduled.
+              </p>
+            </div>
+          </div>
+        `;
+        stream.appendChild(div);
+        logToolExecution('create_payment_link', { status: 'paid', amount: currentOrder.price }, 'SETTLED_200');
+        appendLedgerRow(activeMode === 'a2a' ? 'A2A Protocol' : 'Human Interactive', 'create_payment_link', currentOrder.price, 'pay_test_' + Math.random().toString(36).substring(2, 7), 'PASSED');
+      } else if (status === 'DECLINED') {
+        // Track Mandated Scripted Failure & Recovery Flow
+        appendAgentRationale("Razorpay event 'payment.failed' captured (code: BAD_REQUEST_PAYMENT_DECLINED). Executing Track-mandated Failure & Recovery Protocol.");
+        const div = document.createElement('div');
+        div.className = "flex items-start gap-4 max-w-3xl animate-enter";
+        div.innerHTML = `
+          <div class="w-9 h-9 rounded-xl bg-rose-500/20 border border-rose-500/40 text-rose-400 flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-[20px]">error</span>
+          </div>
+          <div class="flex flex-col gap-2 w-full">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold uppercase tracking-wider text-rose-400 font-mono">Autonomous Recovery Protocol</span>
+              <span class="px-2 py-0.5 rounded bg-rose-500/15 border border-rose-500/30 text-rose-400 font-mono text-[10px]">CARD_DECLINED</span>
+            </div>
+            
+            <div class="p-5 rounded-2xl bg-slate-900 border border-rose-500/30 text-white shadow-lg flex flex-col gap-3">
+              <p class="font-bold text-rose-400">Your test card transaction was declined by the issuer.</p>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                Concierge has saved your cart reservation for 15 minutes. Select a recovery rail below: Instant 1-Click UPI payment or direct live operator hand-off.
+              </p>
+              
+              <div class="flex flex-wrap items-center gap-3 mt-2 pt-3 border-t border-white/[0.08]">
+                <button onclick="handleUpiFallback()" class="px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition-all flex items-center gap-1.5 shadow-[0_0_15px_rgba(16,185,129,0.25)]">
+                  <span class="material-symbols-outlined text-base">qr_code_2</span>
+                  <span>1-Click Retry via UPI</span>
+                </button>
+                <button onclick="handleHumanEscalation()" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs uppercase tracking-wider transition-all flex items-center gap-1.5 border border-white/10">
+                  <span class="material-symbols-outlined text-base">support_agent</span>
+                  <span>Escalate to Human</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+        stream.appendChild(div);
+        logToolExecution('handle_declined_card', { error: 'CARD_DECLINED', fallback: 'upi_retry_prompted' }, 'RECOVERY_TRIGGERED');
+        appendLedgerRow('Failure Recovery', 'escalate_or_retry', currentOrder.price, 'pay_fail_decline', 'ESCALATED / RECOVERY');
+      } else if (status === 'TIMEOUT') {
+        appendAgentRationale("Gateway 504 Timeout. Agent holding state and re-verifying idempotency key.");
+        appendSystemAlert('GATEWAY TIMEOUT (IDEMPOTENCY SAFE)', 'Network timed out with Razorpay test server. No amount was debited. Order token remains cached in LangGraph MemorySaver.');
+        logToolExecution('check_payment_status', { error: 'timeout_504' }, 'IDEMPOTENT_RETRY_READY');
+      }
+
+      stream.scrollTop = stream.scrollHeight;
+    }
+
+    function handleUpiFallback() {
+      simulateAgentWork(() => {
+        appendAgentRationale("User initiated UPI recovery fallback. Generated instant VPA payment handle buyer@okaxis.");
+        appendBuyerMessage("Retry with UPI: buyer@okaxis");
+        executePaymentResult('SUCCESS');
+      });
+    }
+
+    function handleHumanEscalation() {
+      simulateAgentWork(() => {
+        appendAgentRationale("Invoking escalate_to_human tool. Exported session snapshot, trace history, and Razorpay failure payload.");
+        const stream = document.getElementById('terminal-stream');
+        const div = document.createElement('div');
+        div.className = "flex items-start gap-4 max-w-3xl animate-enter";
+        div.innerHTML = `
+          <div class="w-9 h-9 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-400 flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-[20px]">support_agent</span>
+          </div>
+          <div class="flex flex-col gap-1 w-full">
+            <span class="text-xs font-bold uppercase tracking-wider text-amber-400 font-mono">Live Human Operations Desk</span>
+            <div class="p-4 rounded-2xl bg-slate-900 border border-amber-500/30 text-white shadow-lg">
+              <p class="font-bold text-amber-400">Session successfully escalated to human desk.</p>
+              <p class="text-xs font-mono text-slate-400 mt-1">
+                Hand-off Packet ID: <span class="text-emerald-400">ESC_9042_OPS</span> | Operator notified with checkout context.
+              </p>
+            </div>
+          </div>
+        `;
+        stream.appendChild(div);
+        logToolExecution('escalate_to_human', { ticket: 'ESC_9042_OPS', reason: 'CARD_DECLINE_UNRESOLVED' }, 'ESCALATED_200');
+        stream.scrollTop = stream.scrollHeight;
+      });
+    }
+
+    function logToolExecution(name, payload, result) {
+      const box = document.getElementById('tool-inspector-content');
+      const time = new Date().toTimeString().split(' ')[0] + '.' + Math.floor(Math.random()*900 + 100);
+      const div = document.createElement('div');
+      div.className = 'text-slate-400 leading-relaxed border-t border-white/[0.04] pt-1.5 animate-enter';
+      div.innerHTML = `
+        <span class="text-cyan-400">[${time}]</span> <span class="text-emerald-400 font-semibold">tool_invoke:</span> ${escapeHtml(name)}(${escapeHtml(JSON.stringify(payload))})<br>
+        <span class="text-cyan-400">[${time}]</span> <span class="text-slate-300">&larr; ${escapeHtml(name)} return:</span> <span class="text-white font-semibold">${escapeHtml(result)}</span>
+      `;
+      box.appendChild(div);
+      box.scrollTop = box.scrollHeight;
+    }
+
+    function appendLedgerRow(buyerMode, tool, amount, rzpRef, verdict) {
+      const tbody = document.getElementById('ledger-body-rows');
+      const time = new Date().toTimeString().split(' ')[0];
+      const traceId = 'trc_' + Math.random().toString(36).substring(2, 7);
+      const tr = document.createElement('tr');
+      tr.className = 'hover:bg-slate-800/40 transition-colors duration-150 animate-enter';
+      
+      const isBreach = verdict.includes('GATED') || verdict.includes('FAIL');
+      const badgeColor = isBreach ? 'bg-rose-500/15 text-rose-400' : 'bg-emerald-500/15 text-emerald-400';
+      const amountColor = isBreach ? 'text-rose-400' : 'text-white';
+
+      tr.innerHTML = `
+        <td class="py-3.5 px-4 text-slate-400">${time}</td>
+        <td class="py-3.5 px-4 text-cyan-400">${traceId}</td>
+        <td class="py-3.5 px-4"><span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">${buyerMode}</span></td>
+        <td class="py-3.5 px-4 text-white font-semibold">${tool}</td>
+        <td class="py-3.5 px-4 font-bold ${amountColor}">₹${amount.toLocaleString('en-IN')}.00</td>
+        <td class="py-3.5 px-4 text-slate-400 font-mono">${rzpRef}</td>
+        <td class="py-3.5 px-4"><span class="px-2 py-0.5 rounded ${badgeColor} font-semibold text-[10px]">${verdict}</span></td>
+        <td class="py-3.5 px-4 text-right">
+          <button onclick="viewProofModal('${traceId}', 'Transaction ${traceId} executed ${tool}')" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-emerald-400 hover:text-emerald-300 text-[11px] transition-colors">Inspect Proof</button>
+        </td>
+      `;
+      tbody.insertBefore(tr, tbody.firstChild);
+    }
+
+    function inspectPayload(sku, price) {
+      document.getElementById('proof-trace-tag').innerText = 'SKU: ' + sku;
+      document.getElementById('proof-content-box').innerText = JSON.stringify({
+        agent: "Concierge-v2.4",
+        action: "create_payment_link",
+        payload: {
+          amount: price * 100,
+          currency: "INR",
+          description: "Autonomous Checkout: " + sku,
+          customer: {
+            name: "Session 9042",
+            email: "buyer.agent9042@example.com",
+            contact: "+919876543210"
+          },
+          notify: { sms: true, email: true },
+          notes: {
+            guardrail_ceiling: currentSpendCeiling,
+            pre_action_verified: true,
+            deterministic_latency_ms: 18.4
+          }
+        }
+      }, null, 2);
+      document.getElementById('proof-modal').classList.remove('hidden');
+    }
+
+    function viewProofModal(traceId, summary) {
+      document.getElementById('proof-trace-tag').innerText = 'TRACE: ' + traceId;
+      document.getElementById('proof-content-box').innerText = JSON.stringify({
+        trace_id: traceId,
+        timestamp: new Date().toISOString(),
+        summary: summary,
+        langgraph_checkpoint: "saver_0x87612f0",
+        guardrail_matrix: {
+          ceiling_rule: "PASS",
+          negative_price_rule: "PASS",
+          confirm_gate: "USER_CLICK_AUTHORIZED",
+          hmac_verified: true
+        }
+      }, null, 2);
+      document.getElementById('proof-modal').classList.remove('hidden');
+    }
+
+    function closeProofModal() {
+      document.getElementById('proof-modal').classList.add('hidden');
+    }
+
+    function forceLedgerTick() {
+      const tools = ['catalog_search', 'policy_check', 'get_product'];
+      const pick = tools[Math.floor(Math.random() * tools.length)];
+      appendLedgerRow('A2A Ping', pick, 0, 'HEALTH_TICK_200', 'PASSED');
+      logToolExecution('telemetry_ping', { target: 'bigquery_append' }, 'ACK_SYNCED');
+    }
+
+    function downloadAuditJsonl() {
+      const sample = [
+        {"trace_id":"trc_9042_c8f","timestamp":"2025-02-23T14:28:44Z","tool":"create_payment_link","amount":2499,"verdict":"PASSED","signature":"0x88fca"},
+        {"trace_id":"trc_8831_12a","timestamp":"2025-02-23T14:24:19Z","tool":"policy_check","amount":8999,"verdict":"GATED_CEILING_BREACH","signature":"0x712fa"}
+      ];
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(sample.map(e => JSON.stringify(e)).join("\n"));
+      const dl = document.createElement('a');
+      dl.setAttribute("href", dataStr);
+      dl.setAttribute("download", "concierge_audit_ledger.jsonl");
+      dl.click();
+    }
+
+    function resetConversationStream() {
+      const stream = document.getElementById('terminal-stream');
+      stream.innerHTML = `
+        <div class="flex items-start gap-4 max-w-2xl animate-enter">
+          <div class="w-9 h-9 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
+            <span class="material-symbols-outlined text-[20px]">smart_toy</span>
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-bold uppercase tracking-wider text-emerald-400">Concierge Core Agent</span>
+              <span class="text-[11px] font-mono text-slate-400">Session Reset (Ready)</span>
+            </div>
+            <div class="p-4 rounded-2xl bg-slate-900/90 border border-white/[0.07] text-slate-200 text-sm leading-relaxed shadow-sm">
+              Session state cleared. Choose a scenario chip above or instruct Concierge to begin autonomous checkout.
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+  </script>
+</body></html>
+web application/stitch/projects/17980187401088952448/screens/15a112ff00f7492b8cad069259a77c50
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-09-04T21:01:50+05:30.
+
+The user's current state is as follows:
+Active Document: d:\Razorpay Ai buildathon\concierge\agent\orchestrator.py (LANGUAGE_UNSPECIFIED)
+Cursor is on line: 76
+Other open documents:
+- d:\Razorpay Ai buildathon\concierge\mcp_server.py (LANGUAGE_UNSPECIFIED)
+- d:\Razorpay Ai buildathon\concierge\inspect_stitch.py (LANGUAGE_UNSPECIFIED)
+- d:\Razorpay Ai buildathon\concierge\agent\conversation_engine.py (LANGUAGE_UNSPECIFIED)
+- d:\Razorpay Ai buildathon\concierge\app.py (LANGUAGE_UNSPECIFIED)
+- d:\Razorpay Ai buildathon\concierge\agent\tools.py (LANGUAGE_UNSPECIFIED)
+
+The user has uploaded 1 image(s):
+- C:/Users/LENOVO/.gemini/antigravity/brain/1597e0e4-7507-443f-8888-4e7082014356/.user_uploaded/media_1788535899732.png
+You can embed this image in an artifact if you need the USER to review it.
+</ADDITIONAL_METADATA>
