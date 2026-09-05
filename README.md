@@ -7,11 +7,16 @@
 **Razorpay AI Buildathon** · **Track 01: AI Growth & Agentic Commerce**  
 *Autonomous, bounded, and cryptographically verified checkout for merchants.*
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Render-00c7b7?style=for-the-badge&logo=render&logoColor=white)](https://concierge-os.onrender.com/)
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/HaswinChony308/CONCIERGE.OS)
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Python: 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
 [![React: 18](https://img.shields.io/badge/React-18-61dafb.svg)](https://reactjs.org/)
 [![Razorpay: Test--Mode](https://img.shields.io/badge/Razorpay-Test--Mode-0c2340.svg)](https://razorpay.com/)
 [![Protocol: NPCI_UAP_/_Google_AP2](https://img.shields.io/badge/Protocol-NPCI_UAP_/_Google_AP2-10b981.svg)](https://github.com/HaswinChony308/CONCIERGE.OS)
+
+> 🚀 **Live Production Deployment:** [https://concierge-os.onrender.com/](https://concierge-os.onrender.com/)
 
 </div>
 
@@ -106,9 +111,17 @@ Concierge follows a strict **Hexagonal Architecture** with clear separation betw
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Quick Start & Live Access
 
-### 1. Prerequisites
+### 🌐 Instant Live Cloud Access (No Setup Required)
+You can test the full autonomous checkout agent immediately in production:  
+👉 **[https://concierge-os.onrender.com/](https://concierge-os.onrender.com/)**
+
+---
+
+### 💻 Local Setup & Development
+
+#### 1. Prerequisites
 - **Python 3.10+**
 - **Node.js 18+** & `npm`
 
