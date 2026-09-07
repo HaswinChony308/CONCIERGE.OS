@@ -249,7 +249,8 @@ python -c "from agent.mandates import *; print('Mandates loaded successfully')"
 
 ## 👥 Author
 
-- **Haswin Chony Saladi** — Lead Architect & Developer  
+- **Haswin Chony Saladi** — Lead Architect & Developer
+- and also **primary build partner** is ** ANTIGRAVITY **  
 - Built for the **Razorpay AI Buildathon (Track 01: AI Growth & Agentic Commerce)**
 
 ---
