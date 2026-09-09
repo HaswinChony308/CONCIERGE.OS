@@ -1,6 +1,5 @@
 """
 Thin wrapper around the Razorpay Python SDK, restricted to test mode.
-
 Swap in by setting RAZORPAY_MODE=live_test and providing
 RAZORPAY_KEY_ID / RAZORPAY_KEY_SECRET (the *test mode* keys from the
 dashboard — never live keys during the buildathon). Nothing else in the
@@ -9,17 +8,13 @@ interface in payments/client.py.
 """
 
 import os
-
 import razorpay
-
 from payments.client import (
     PaymentClient,
     OrderResult,
     PaymentLinkResult,
     PaymentStatusResult,
 )
-
-
 class RazorpayTestClient(PaymentClient):
     def __init__(self):
         key_id = os.environ["RAZORPAY_KEY_ID"]
