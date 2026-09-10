@@ -116,7 +116,7 @@ Concierge follows a strict **Hexagonal Architecture** with clear separation betw
 ### 🌐 Instant Live Cloud Access (No Setup Required)
 You can test the full autonomous checkout agent immediately in production:  
 👉 **[https://concierge-os.onrender.com/](https://concierge-os.onrender.com/)**
-
+well this was made with zero cost so I had to use Render as deployment platform because for static websites which doesn't get that much engagement so i had to choose the free tier  
 ---
 
 ### 💻 Local Setup & Development
