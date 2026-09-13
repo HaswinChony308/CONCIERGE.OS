@@ -1,5 +1,5 @@
 """
-Automated Test Suite for Concierge.
+An Automated test suite for Agentic commerce!!!
 
 Verifies:
 1. Catalog search & product lookup
