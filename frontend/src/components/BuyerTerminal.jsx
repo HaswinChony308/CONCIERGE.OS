@@ -1,4 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+
 
 export default function BuyerTerminal({
   activeMode,
@@ -147,10 +149,11 @@ export default function BuyerTerminal({
             </div>
           </div>
         ) : (
-          messages.map((m, idx) => {
+          <AnimatePresence>
+          {messages.map((m, idx) => {
             if (m.type === 'buyer') {
               return (
-                <div key={idx} className="flex items-start justify-end gap-4 max-w-xl self-end ml-auto animate-enter">
+                <motion.div key={idx} className="flex items-start justify-end gap-4 max-w-xl self-end ml-auto" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
                   <div className="flex flex-col items-end gap-1.5">
                     <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Buyer (Session #9042)</span>
                     <div className="p-4 rounded-2xl bg-emerald-950/30 border border-emerald-500/30 text-emerald-100 text-sm leading-relaxed shadow-sm">
@@ -160,13 +163,13 @@ export default function BuyerTerminal({
                   <div className="w-9 h-9 rounded-xl bg-slate-800 border border-white/10 flex items-center justify-center text-slate-200 shrink-0">
                     <span className="material-symbols-outlined text-[20px]">person</span>
                   </div>
-                </div>
+                </motion.div>
               );
             }
 
             if (m.type === 'rationale') {
               return (
-                <div key={idx} className="flex items-start gap-4 max-w-3xl animate-enter">
+                <motion.div key={idx} className="flex items-start gap-4 max-w-3xl" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
                   <div className="w-9 h-9 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
                     <span className="material-symbols-outlined text-[20px]">psychology</span>
                   </div>
@@ -178,14 +181,14 @@ export default function BuyerTerminal({
                       {m.text}
                     </div>
                   </div>
-                </div>
+                </motion.div>
               );
             }
 
             if (m.type === 'product_card') {
               const { name, sku, price, desc, image } = m.product;
               return (
-                <div key={idx} className="flex items-start gap-4 max-w-3xl animate-enter">
+                <motion.div key={idx} className="flex items-start gap-4 max-w-3xl" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
                   <div className="w-9 h-9 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
                     <span className="material-symbols-outlined text-[20px]">shopping_bag</span>
                   </div>
@@ -267,13 +270,13 @@ export default function BuyerTerminal({
                       </div>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               );
             }
 
             if (m.type === 'product_list') {
               return (
-                <div key={idx} className="flex items-start gap-4 max-w-3xl animate-enter">
+                <motion.div key={idx} className="flex items-start gap-4 max-w-3xl" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
                   <div className="w-9 h-9 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
                     <span className="material-symbols-outlined text-[20px]">grid_view</span>
                   </div>
@@ -352,13 +355,13 @@ export default function BuyerTerminal({
                       ))}
                     </div>
                   </div>
-                </div>
+                </motion.div>
               );
             }
 
             if (m.type === 'alert') {
               return (
-                <div key={idx} className="flex items-start gap-4 max-w-3xl animate-enter">
+                <motion.div key={idx} className="flex items-start gap-4 max-w-3xl" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
                   <div className="w-9 h-9 rounded-xl bg-rose-500/20 border border-rose-500/40 flex items-center justify-center text-rose-400 shrink-0">
                     <span className="material-symbols-outlined text-[20px]">gavel</span>
                   </div>
@@ -370,13 +373,13 @@ export default function BuyerTerminal({
                       {m.text}
                     </div>
                   </div>
-                </div>
+                </motion.div>
               );
             }
 
                         if (m.type === 'payment_success') {
               return (
-                <div key={idx} className="flex items-start gap-4 max-w-3xl animate-enter">
+                <motion.div key={idx} className="flex items-start gap-4 max-w-3xl" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }}>
                   <div className="w-9 h-9 rounded-xl bg-emerald-500 text-slate-950 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(16,185,129,0.4)]">
                     <span className="material-symbols-outlined text-[20px]">check_circle</span>
                   </div>
@@ -401,13 +404,13 @@ export default function BuyerTerminal({
                       )}
                     </div>
                   </div>
-                </div>
+                </motion.div>
               );
             }
 
             if (m.type === 'payment_declined') {
               return (
-                <div key={idx} className="flex items-start gap-4 max-w-3xl animate-enter">
+                <motion.div key={idx} className="flex items-start gap-4 max-w-3xl" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
                   <div className="w-9 h-9 rounded-xl bg-rose-500/20 border border-rose-500/40 text-rose-400 flex items-center justify-center shrink-0">
                     <span className="material-symbols-outlined text-[20px]">error</span>
                   </div>
@@ -445,13 +448,13 @@ export default function BuyerTerminal({
                       </div>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               );
             }
 
             if (m.type === 'escalated') {
               return (
-                <div key={idx} className="flex items-start gap-4 max-w-3xl animate-enter">
+                <motion.div key={idx} className="flex items-start gap-4 max-w-3xl" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
                   <div className="w-9 h-9 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-400 flex items-center justify-center shrink-0">
                     <span className="material-symbols-outlined text-[20px]">support_agent</span>
                   </div>
@@ -466,12 +469,13 @@ export default function BuyerTerminal({
                       </p>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               );
             }
 
             return null;
-          })
+          })}
+          </AnimatePresence>
         )}
 
         {isWorking && (

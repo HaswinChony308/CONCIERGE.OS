@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 export default function MetricsGrid({ metrics, ceiling, activeMode, onModeChange }) {
   const gmv = metrics?.total_gmv_inr || 148250;
@@ -9,7 +10,7 @@ export default function MetricsGrid({ metrics, ceiling, activeMode, onModeChange
   return (
     <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
       {/* Card 1: SETTLEMENT */}
-      <div className="rounded-xl bg-[#090d14] border border-[#161e2e] p-4 flex flex-col justify-between h-[130px]">
+      <motion.div className="rounded-xl bg-[#090d14] border border-[#161e2e] p-4 flex flex-col justify-between h-[130px] transition-transform hover:scale-105" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} whileHover={{ scale: 1.02 }}>
         <div className="flex items-center justify-between text-[11px] font-mono tracking-widest text-slate-400">
           <span>SETTLEMENT</span>
           <span className="px-2 py-0.5 rounded border border-[#161e2e] text-[10px] text-slate-400">
@@ -30,10 +31,10 @@ export default function MetricsGrid({ metrics, ceiling, activeMode, onModeChange
           <span className="text-slate-500 uppercase tracking-wider">RAZORPAY SANDBOX</span>
           <span className="text-[#3b82f6] font-bold tracking-wider">99.4% YIELD</span>
         </div>
-      </div>
+      </motion.div>
 
       {/* Card 2: INTERVENTIONS */}
-      <div className="rounded-xl bg-[#090d14] border border-[#161e2e] p-4 flex flex-col justify-between h-[130px]">
+      <motion.div className="rounded-xl bg-[#090d14] border border-[#161e2e] p-4 flex flex-col justify-between h-[130px]" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.1 }} whileHover={{ scale: 1.04 }}>
         <div className="flex items-center justify-between text-[11px] font-mono tracking-widest text-slate-400">
           <span>INTERVENTIONS</span>
           <span className="px-2 py-0.5 rounded border border-[#161e2e] text-[10px] text-slate-400">
@@ -54,10 +55,10 @@ export default function MetricsGrid({ metrics, ceiling, activeMode, onModeChange
           <span className="text-[#3b82f6] font-bold">CEILING: ₹{ceiling.toLocaleString('en-IN')}</span>
           <span className="text-amber-400 font-bold tracking-wider">0 LEAKAGE</span>
         </div>
-      </div>
+      </motion.div>
 
       {/* Card 3: GRAPH LOOP */}
-      <div className="rounded-xl bg-[#090d14] border border-[#161e2e] p-4 flex flex-col justify-between h-[130px]">
+      <motion.div className="rounded-xl bg-[#090d14] border border-[#161e2e] p-4 flex flex-col justify-between h-[130px]" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.2 }} whileHover={{ scale: 1.04 }}>
         <div className="flex items-center justify-between text-[11px] font-mono tracking-widest text-slate-400">
           <span>GRAPH LOOP</span>
           <span className="px-2 py-0.5 rounded border border-[#161e2e] text-[10px] text-slate-400">
@@ -81,10 +82,10 @@ export default function MetricsGrid({ metrics, ceiling, activeMode, onModeChange
             IDLE
           </span>
         </div>
-      </div>
+      </motion.div>
 
       {/* Card 4: PIPELINE */}
-      <div className="rounded-xl bg-[#090d14] border border-[#161e2e] p-4 flex flex-col justify-between h-[130px]">
+      <motion.div className="rounded-xl bg-[#090d14] border border-[#161e2e] p-4 flex flex-col justify-between h-[130px]" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.3 }} whileHover={{ scale: 1.04 }}>
         <div className="flex items-center justify-between text-[11px] font-mono tracking-widest text-slate-400">
           <span>PIPELINE</span>
           <span className="text-[10px] text-slate-500 font-mono">V2.4.0</span>
@@ -130,7 +131,7 @@ export default function MetricsGrid({ metrics, ceiling, activeMode, onModeChange
             {activeMode === 'human' ? 'B2C CONV' : activeMode === 'a2a' ? 'A2A RPC' : 'FALLBACK'}
           </span>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

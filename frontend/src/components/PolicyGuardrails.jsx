@@ -1,8 +1,9 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 export default function PolicyGuardrails({ ceiling, onCeilingChange }) {
   return (
-    <div className="rounded-xl bg-[#090d14] border border-[#161e2e] p-5 flex flex-col justify-between">
+    <motion.div className="rounded-xl bg-[#090d14] border border-[#161e2e] p-5 flex flex-col justify-between" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.2 }}>
       {/* Header */}
       <div className="flex items-start justify-between pb-3 border-b border-[#161e2e]">
         <div>
@@ -40,7 +41,7 @@ export default function PolicyGuardrails({ ceiling, onCeilingChange }) {
 
       {/* Rules Matrix matching AI Studio Screenshot */}
       <div className="space-y-2 text-xs font-mono">
-        <div className="p-2.5 rounded bg-[#05070c] border border-[#161e2e] flex items-center justify-between">
+        <div className="p-2.5 rounded bg-[#05070c] border border-[#161e2e] flex items-center justify-between transition-colors hover:bg-[#0d1320] cursor-default">
           <span className="text-slate-300 text-[11px] uppercase tracking-wider">
             RULE 2: CONFIRM-BEFORE-CHARGE
           </span>
@@ -49,7 +50,7 @@ export default function PolicyGuardrails({ ceiling, onCeilingChange }) {
           </span>
         </div>
 
-        <div className="p-2.5 rounded bg-[#05070c] border border-[#161e2e] flex items-center justify-between">
+        <div className="p-2.5 rounded bg-[#05070c] border border-[#161e2e] flex items-center justify-between transition-colors hover:bg-[#0d1320] cursor-default">
           <span className="text-slate-300 text-[11px] uppercase tracking-wider">
             RULE 3: NEGATIVE PRICE FILTER
           </span>
@@ -58,7 +59,7 @@ export default function PolicyGuardrails({ ceiling, onCeilingChange }) {
           </span>
         </div>
 
-        <div className="p-2.5 rounded bg-[#05070c] border border-[#161e2e] flex items-center justify-between">
+        <div className="p-2.5 rounded bg-[#05070c] border border-[#161e2e] flex items-center justify-between transition-colors hover:bg-[#0d1320] cursor-default">
           <span className="text-slate-300 text-[11px] uppercase tracking-wider">
             RULE 4: FAILURE PROTOCOL
           </span>
@@ -67,6 +68,6 @@ export default function PolicyGuardrails({ ceiling, onCeilingChange }) {
           </span>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

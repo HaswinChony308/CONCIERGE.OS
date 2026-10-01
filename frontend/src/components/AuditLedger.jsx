@@ -1,8 +1,9 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 export default function AuditLedger({ records, onInspectProof, onDownloadJsonl, onPingLedger }) {
   return (
-    <section className="rounded-xl bg-[#090d14] border border-[#161e2e] p-5 flex flex-col gap-4">
+    <motion.section className="rounded-xl bg-[#090d14] border border-[#161e2e] p-5 flex flex-col gap-4" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.3 }}>
       {/* Header matching AI Studio Screenshot */}
       <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 pb-4 border-b border-[#161e2e]">
         <div className="flex items-center gap-3">
@@ -98,6 +99,6 @@ export default function AuditLedger({ records, onInspectProof, onDownloadJsonl, 
           </tbody>
         </table>
       </div>
-    </section>
+    </motion.section>
   );
 }
