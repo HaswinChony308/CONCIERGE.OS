@@ -456,8 +456,32 @@ export default function App() {
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
+  /* ─── Status Ticker Items ─── */
+  const TICKER_ITEMS = [
+    '⚡ CONCIERGE.OS v2.4.0 — AUTONOMOUS AGENTIC COMMERCE',
+    '🔒 HMAC-SHA256 MANDATE CHAIN VERIFIED',
+    '📊 LANGGRAPH LOOP: 18.4MS AVG',
+    '🛡️ MONEYGUARDRAIL: 100% ENFORCEMENT RATE',
+    `💰 CEILING: ₹${ceiling.toLocaleString('en-IN')} | MODE: ${activeMode.toUpperCase()}`,
+    '🔗 NPCI UAP · GOOGLE AP2 · OPENAI ACP ALIGNED',
+    '✅ RAZORPAY TEST-MODE ACTIVE',
+  ];
+
   return (
-    <div className="min-h-screen bg-[#05070c] text-slate-100 p-4 lg:p-6 flex flex-col gap-4 max-w-[1700px] mx-auto">
+    <div className="min-h-screen bg-[#030508] text-slate-100 flex flex-col">
+      {/* ─── Ticker Bar ─── */}
+      <div className="w-full bg-[#07090f] border-b border-[#161e2e] overflow-hidden py-1.5 flex-shrink-0">
+        <div className="flex whitespace-nowrap marquee-track">
+          {[...TICKER_ITEMS, ...TICKER_ITEMS].map((item, i) => (
+            <span key={i} className="text-[9px] font-mono text-slate-500 tracking-widest uppercase px-8">
+              {item}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* ─── Main Content ─── */}
+      <div className="flex-1 p-4 lg:p-6 flex flex-col gap-5 max-w-[1700px] mx-auto w-full">
       <Header
         ceiling={ceiling}
         activeMode={activeMode}
@@ -542,6 +566,7 @@ export default function App() {
         onClose={() => setIsProofOpen(false)}
         proofData={proofData}
       />
+      </div>
     </div>
   );
 }

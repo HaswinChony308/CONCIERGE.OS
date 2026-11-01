@@ -2,59 +2,278 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Official Google Sans & Product Sans Fonts from Google CDN */
-@font-face {
-  font-family: 'Google Sans';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('https://fonts.gstatic.com/s/googlesans/v58/4UaGrErYxMoHabbkvnhR-ms0xHcF2JY.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Google Sans';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url('https://fonts.gstatic.com/s/googlesans/v58/4UabrErYxMoHabbkvnhE-Ge0xHcF2JY.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Google Sans';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url('https://fonts.gstatic.com/s/googlesans/v58/4UabrErYxMoHabbkvnh4-Ge0xHcF2JY.woff2') format('woff2');
+/* ─────────────────────────────────────────
+   CONCIERGE.OS — Enhanced Cyber UI v2.0
+   Premium dark-fintech design system
+───────────────────────────────────────── */
+
+/* Google Sans & JetBrains Mono via Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  /* Color Tokens */
+  --bg-void:       #030508;
+  --bg-panel:      #07090f;
+  --bg-card:       #0b0f1a;
+  --bg-elevated:   #0e1425;
+  --bg-hover:      #111829;
+
+  --border-dim:    #161e2e;
+  --border-mid:    #1e2d47;
+  --border-glow:   #2563eb40;
+
+  --accent-blue:   #3b82f6;
+  --accent-cyan:   #06b6d4;
+  --accent-green:  #10b981;
+  --accent-amber:  #f59e0b;
+  --accent-rose:   #f43f5e;
+  --accent-violet: #8b5cf6;
+
+  --text-primary:  #f1f5f9;
+  --text-secondary:#94a3b8;
+  --text-dim:      #475569;
+  --text-muted:    #1e2d47;
+
+  /* Glow Colors */
+  --glow-blue:     rgba(59,130,246,0.15);
+  --glow-cyan:     rgba(6,182,212,0.12);
+  --glow-green:    rgba(16,185,129,0.12);
 }
 
-:root, body {
-  font-family: 'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
-  background-color: #05070c;
-  color: #f1f5f9;
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body, :root {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: var(--bg-void);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .font-mono, pre, code, .telemetry-cell {
   font-family: 'JetBrains Mono', 'Roboto Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
 }
 
-/* Custom Scrollbars */
-::-webkit-scrollbar {
-  width: 4px;
-  height: 4px;
-}
-::-webkit-scrollbar-track {
-  background: #05070c;
-}
-::-webkit-scrollbar-thumb {
-  background: #1e293b;
-  border-radius: 2px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #3b82f6;
+/* ─── Scrollbars ─── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: var(--bg-void); }
+::-webkit-scrollbar-thumb { background: var(--border-mid); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent-blue); }
+
+/* ─── Background Grid Effect ─── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(59,130,246,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59,130,246,0.025) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
 }
 
-/* Crisp AI Studio Panel Shadows */
+body > * { position: relative; z-index: 1; }
+
+/* ─── Panel Shadows / Glow ─── */
+.panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-dim);
+  border-radius: 12px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.panel:hover {
+  border-color: var(--border-glow);
+  box-shadow: 0 0 0 1px var(--glow-blue), 0 8px 32px -8px rgba(0,0,0,0.8);
+}
+
 .glow-panel {
-  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.7), 0 0 1px 1px rgba(255, 255, 255, 0.04);
+  box-shadow: 0 4px 24px -4px rgba(0,0,0,0.8), 0 0 1px 1px rgba(255,255,255,0.03);
 }
 .glow-panel:hover {
-  box-shadow: 0 8px 30px -4px rgba(0, 0, 0, 0.8), 0 0 1px 1px rgba(59, 130, 246, 0.2);
+  box-shadow: 0 8px 40px -8px rgba(0,0,0,0.9), 0 0 0 1px rgba(59,130,246,0.2), 0 0 20px -8px rgba(59,130,246,0.15);
 }
+
+/* ─── Neon Badge Variants ─── */
+.badge-blue   { background: rgba(59,130,246,0.1); color: #60a5fa; border: 1px solid rgba(59,130,246,0.25); }
+.badge-green  { background: rgba(16,185,129,0.1); color: #34d399; border: 1px solid rgba(16,185,129,0.25); }
+.badge-amber  { background: rgba(245,158,11,0.1); color: #fbbf24; border: 1px solid rgba(245,158,11,0.25); }
+.badge-rose   { background: rgba(244,63,94,0.1);  color: #fb7185; border: 1px solid rgba(244,63,94,0.25); }
+.badge-cyan   { background: rgba(6,182,212,0.1);  color: #22d3ee; border: 1px solid rgba(6,182,212,0.25); }
+.badge-violet { background: rgba(139,92,246,0.1); color: #a78bfa; border: 1px solid rgba(139,92,246,0.25); }
+
+/* ─── Animated Pulse Dot ─── */
+.pulse-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--accent-green);
+  box-shadow: 0 0 0 0 rgba(16,185,129,0.6);
+  animation: pulse-ring 2s cubic-bezier(0.4,0,0.6,1) infinite;
+  display: inline-block;
+}
+.pulse-dot-blue {
+  background: var(--accent-blue);
+  box-shadow: 0 0 0 0 rgba(59,130,246,0.6);
+}
+.pulse-dot-amber {
+  background: var(--accent-amber);
+  box-shadow: 0 0 0 0 rgba(245,158,11,0.6);
+}
+
+@keyframes pulse-ring {
+  0%   { box-shadow: 0 0 0 0 currentColor; opacity: 1; }
+  70%  { box-shadow: 0 0 0 6px transparent; opacity: 0.7; }
+  100% { box-shadow: 0 0 0 0 transparent; opacity: 1; }
+}
+
+/* ─── Scan-line Overlay ─── */
+.scanline {
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.08) 2px,
+    rgba(0,0,0,0.08) 4px
+  );
+  pointer-events: none;
+}
+
+/* ─── Terminal Text Effect ─── */
+.terminal-cursor::after {
+  content: '█';
+  animation: blink 1s step-end infinite;
+  color: var(--accent-blue);
+  margin-left: 2px;
+}
+@keyframes blink {
+  0%,100% { opacity: 1; } 50% { opacity: 0; }
+}
+
+/* ─── Glowing Button ─── */
+.btn-glow {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s;
+}
+.btn-glow::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(59,130,246,0.15), transparent);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.btn-glow:hover::before { opacity: 1; }
+.btn-glow:active { transform: scale(0.97); }
+
+/* ─── Data metric shimmer ─── */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.metric-shimmer {
+  background: linear-gradient(90deg, #f1f5f9 0%, #60a5fa 40%, #f1f5f9 80%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+}
+
+/* ─── Graph node connections ─── */
+.node-connector {
+  position: relative;
+}
+.node-connector::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -8px;
+  width: 8px;
+  height: 1px;
+  background: var(--border-mid);
+}
+
+/* ─── Glassmorphism card ─── */
+.glass-card {
+  background: rgba(11,15,26,0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(59,130,246,0.12);
+}
+
+/* ─── Range slider custom style ─── */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(to right, #2563eb var(--range-pct, 33%), #161e2e var(--range-pct, 33%));
+  outline: none;
+  cursor: pointer;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #3b82f6;
+  box-shadow: 0 0 8px rgba(59,130,246,0.6), 0 0 0 2px rgba(59,130,246,0.2);
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+input[type="range"]::-webkit-slider-thumb:hover {
+  box-shadow: 0 0 12px rgba(59,130,246,0.8), 0 0 0 4px rgba(59,130,246,0.15);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #3b82f6;
+  border: none;
+  cursor: pointer;
+}
+
+/* ─── Status indicator ─── */
+.status-online {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.status-online::before {
+  content: '';
+  display: inline-block;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--accent-green);
+  box-shadow: 0 0 6px var(--accent-green);
+  animation: pulse-ring 2s infinite;
+}
+
+/* ─── Table row hover ─── */
+tbody tr {
+  transition: background 0.15s;
+}
+tbody tr:hover {
+  background: rgba(59,130,246,0.04) !important;
+}
+
+/* ─── Crypto hash style ─── */
+.hash-text {
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.05em;
+  color: #475569;
+  font-size: 10px;
+}
+
+/* ─── Scrolling marquee ─── */
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.marquee-track { animation: marquee 30s linear infinite; }
