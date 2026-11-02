@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
 const NAV_LINKS = [
-  { id: 'terminal', label: 'Terminal' },
-  { id: 'policy',   label: 'Policy' },
-  { id: 'ledger',   label: 'Ledger' },
+  { id: 'terminal',    label: 'Terminal' },
+  { id: 'policy',      label: 'Policy' },
+  { id: 'ai-protocol', label: 'AI Proto', aiOnly: true },
+  { id: 'ledger',      label: 'Ledger' },
 ];
 
 const STATUS_CHIPS = [
@@ -109,19 +110,34 @@ export default function Header({ ceiling, activeMode, onModeChange, onNavigate }
       <div className="flex items-center gap-4">
         {/* Nav Pills */}
         <nav className="hidden lg:flex items-center gap-1 bg-[#0b0f1a] border border-[#161e2e] rounded-lg p-1">
-          {NAV_LINKS.map(link => (
-            <button
-              key={link.id}
-              onClick={() => handleNav(link.id)}
-              className={`px-3 py-1 rounded text-[11px] font-mono font-semibold tracking-wider transition-all duration-200 ${
-                activeNav === link.id
-                  ? 'bg-blue-600 text-white shadow-sm shadow-blue-900/50'
-                  : 'text-slate-500 hover:text-white'
-              }`}
-            >
-              {link.label}
-            </button>
-          ))}
+          {NAV_LINKS.map(link => {
+            const isActive = activeNav === link.id;
+            const isAiTab = link.aiOnly;
+            const aiModeOn = activeMode === 'ai';
+            return (
+              <button
+                key={link.id}
+                onClick={() => handleNav(link.id)}
+                className={`px-3 py-1 rounded text-[11px] font-mono font-semibold tracking-wider transition-all duration-200 flex items-center gap-1 ${
+                  isActive && isAiTab && aiModeOn
+                    ? 'bg-gradient-to-r from-cyan-600 to-violet-600 text-white shadow-sm'
+                    : isActive
+                    ? 'bg-blue-600 text-white shadow-sm shadow-blue-900/50'
+                    : isAiTab && aiModeOn
+                    ? 'text-cyan-400 hover:text-white border border-cyan-500/30 hover:border-cyan-500/60'
+                    : 'text-slate-500 hover:text-white'
+                }`}
+              >
+                {isAiTab && (
+                  <span className={`text-[9px] ${aiModeOn ? 'text-cyan-300' : 'text-slate-600'}`}>🤖</span>
+                )}
+                {link.label}
+                {isAiTab && aiModeOn && (
+                  <span className="w-1 h-1 rounded-full bg-cyan-400 animate-pulse ml-0.5" />
+                )}
+              </button>
+            );
+          })}
         </nav>
 
         <div className="h-5 w-px bg-[#161e2e] hidden lg:block" />

@@ -9,6 +9,7 @@ import LangGraphHUD from './components/LangGraphHUD';
 import AuditLedger from './components/AuditLedger';
 import RazorpayModal from './components/RazorpayModal';
 import ProofModal from './components/ProofModal';
+import AgentProtocolPanel from './components/AgentProtocolPanel';
 
 const DEFAULT_MESSAGES = [
   {
@@ -465,7 +466,8 @@ export default function App() {
     `💰 CEILING: ₹${ceiling.toLocaleString('en-IN')} | MODE: ${activeMode.toUpperCase()}`,
     '🔗 NPCI UAP · GOOGLE AP2 · OPENAI ACP ALIGNED',
     '✅ RAZORPAY TEST-MODE ACTIVE',
-  ];
+    activeMode === 'ai' ? '🤖 AI↔AI PROTOCOL ACTIVE — MACHINE BUYER ONLINE' : null,
+  ].filter(Boolean);
 
   return (
     <div className="min-h-screen bg-[#030508] text-slate-100 flex flex-col">
@@ -543,7 +545,14 @@ export default function App() {
         </div>
       </section>
 
-      {/* Row 4: Verifiable Append-Only Audit Ledger */}
+      {/* Row 4: AI-to-AI Protocol Panel (only when mode is 'ai') */}
+      {activeMode === 'ai' && (
+        <section id="ai-protocol">
+          <AgentProtocolPanel ceiling={ceiling} />
+        </section>
+      )}
+
+      {/* Row 5: Verifiable Append-Only Audit Ledger */}
       <div id="ledger">
         <AuditLedger
           records={records}
