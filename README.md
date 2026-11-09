@@ -196,54 +196,54 @@ python test_smoke.py
 python -c "from agent.mandates import *; print('Mandates loaded successfully')"
 ```
 
-### Verified Test Cases:
-1. Catalog search & multi-product semantic retrieval.
-2. Under-ceiling direct purchase.
-3. Over-ceiling confirmation guardrail intercept.
-4. Price integrity and anti-tampering check (rejects modified amounts).
-5. Inventory backoff protection (detects out-of-stock items).
-6. Scripted card decline and autonomous 1-click UPI recovery (`FAILDEMO`).
-7. Operator escalation tool (`escalate_to_human`).
-8. Append-only audit trail consistency (pre-action intent logged before outcome).
+### Verified Test Cases
+1. **Semantic Search & Retrieval**: Multi-product querying and catalog discovery.
+2. **Autonomous Execution**: Direct purchase processing within approved spending limits.
+3. **Ceiling Guardrails**: Real-time intercept when purchase amounts exceed pre-authorized limits.
+4. **Tamper Prevention & Price Integrity**: Instant rejection of manipulated or altered pricing.
+5. **Inventory Protection**: Graceful handling and backoff when items are out of stock.
+6. **Payment Failure Fallback**: Automated 1-click UPI recovery on simulated card declines (`FAILDEMO`).
+7. **Human Escalation**: Seamless handoff to human support via `escalate_to_human`.
+8. **Tamper-Evident Audit Logging**: Append-only event tracking that records pre-action intent prior to execution.
 
 ---
 
-## 🎬 Flagship Scenarios for Evaluation
+## 🎬 Key Evaluation Scenarios
 
-1. **Scenario 1: Natural Language Discovery with Two-Tier Mandates**
-   - Click `⚡ RUNNING SHOES < ₹3,000 (SIZE 9)` or type `"Find running shoes"`.
-   - Agent displays matching catalog items with validated SKUs and HMAC-SHA256 Mandates.
-   - Click **Authorize** to open checkout and generate the payment link.
+1. **Scenario 1: Conversational Discovery & Two-Tier Mandates**
+   - Click `⚡ RUNNING SHOES < ₹3,000 (SIZE 9)` or prompt: `"Find running shoes"`.
+   - The agent surfaces relevant catalog products with validated SKUs and HMAC-SHA256 signatures.
+   - Click **Authorize** to proceed to checkout and issue a payment link.
 
-2. **Scenario 2: Hard Spend Ceiling Gate (Preventing Financial Leakage)**
-   - Click `⚡ GPS WATCH ₹8,999 (CEILING BREACH)` or type `"buy 8999 watch"`.
-   - The policy engine mathematically blocks `CartMandate` issuance because ₹8,999 exceeds the authorized ₹5,000 IntentMandate limit.
-   - A `MANDATE CEILING BREACH` alert displays and the intercept is recorded to the audit log.
+2. **Scenario 2: Hard Budget Enforcement (Leakage Prevention)**
+   - Click `⚡ GPS WATCH ₹8,999 (CEILING BREACH)` or prompt: `"buy 8999 watch"`.
+   - The policy engine enforces a hard stop: the ₹8,999 total exceeds the ₹5,000 ceiling, preventing `CartMandate` creation.
+   - A `MANDATE CEILING BREACH` notice triggers, and the blocked attempt is logged to the audit trail.
 
-3. **Scenario 3: Razorpay Card Decline & Autonomous Recovery**
-   - Click `💳 DECLINED` scenario button.
-   - The simulated checkout triggers a `CARD_DECLINED` event.
-   - The agent executes Track 01 Failure Recovery: locks cart for 15 minutes, presents **1-Click UPI Recovery (`buyer@okaxis`)**, and offers 1-click hand-off to human operations (`ESC_9042_OPS`).
+3. **Scenario 3: Razorpay Decline & Self-Healing Checkout**
+   - Click the `💳 DECLINED` trigger.
+   - The system intercepts the `CARD_DECLINED` gateway webhook.
+   - The agent initiates automated recovery: reserves the cart for 15 minutes, surfaces a **1-Click UPI Recovery (`buyer@okaxis`)** option, and exposes an escalation route to human operators (`ESC_9042_OPS`).
 
-4. **Scenario 4: Cryptographic Proof Inspector**
-   - In the bottom **Verifiable Audit Ledger**, click **VIEW PROOF** on any transaction.
-   - Inspect the structured Intent ID, Cart ID, HMAC digest, and SHA-256 state hash.
+4. **Scenario 4: Cryptographic Verification**
+   - In the **Verifiable Audit Ledger**, select **VIEW PROOF** for any event.
+   - Audit the underlying payload: Intent ID, Cart ID, HMAC signature, and state-level SHA-256 hash.
 
 ---
 
-## 🛠️ What Broke and How We Fixed It
+## 🛠️ Post-Mortem & Architectural Refinements
 
-1. **The Static Single-Product Fallback**:
-   - *Issue*: Early prototypes defaulted to a single shoe when generic queries were entered.
-   - *Fix*: Re-engineered [`server.py`](./server.py) with full-catalog multi-category indexing (25 items across Footwear, Wearables, Apparel, Equipment, Accessories, and Nutrition) and Gemini 3 Flash semantic reasoning, returning responsive 2-column product grids.
+1. **Broad Query Resolution (Single-Item Fallback)**
+   - *Problem*: Generic search queries initially defaulted to returning an isolated footwear result.
+   - *Resolution*: Upgraded [`server.py`](./server.py) with comprehensive semantic indexing across 25 items spanning six categories (Footwear, Wearables, Apparel, Equipment, Accessories, and Nutrition) powered by Gemini 3 Flash, formatting results into responsive multi-item grids.
 
-2. **The Fragile Boolean Confirmation Problem**:
-   - *Issue*: A mutable `buyer_confirmed: True` boolean is easily manipulated by prompt injection or model hallucination.
-   - *Fix*: Created [`agent/mandates.py`](./agent/mandates.py) implementing cryptographic Two-Tier Mandates. An unforgeable `CartMandate` must satisfy the signed scope and limit of an `IntentMandate` via HMAC-SHA256.
+2. **Prompt Injection & State Integrity**
+   - *Problem*: Relying on a mutable client-side boolean flag (`buyer_confirmed: True`) left state transitions vulnerable to jailbreaks and model hallucinations.
+   - *Resolution*: Implemented cryptographic Two-Tier Mandates via [`agent/mandates.py`](./agent/mandates.py), requiring `CartMandate` tokens to match the cryptographically signed HMAC-SHA256 scope and limits of the initial `IntentMandate`.
 
-3. **Gateway Timeout & Idempotency**:
-   - *Issue*: Network timeouts risked duplicate charges upon client retry.
-   - *Fix*: Bound order receipts to cryptographic trace hashes (`rcpt_{sku}_{cart_id}`), ensuring idempotency across retry cycles.
+3. **Payment Idempotency & Network Resilience**
+   - *Problem*: Gateway timeouts during user retries created the risk of duplicate charges.
+   - *Resolution*: Tied payment receipts directly to deterministically derived transaction hashes (`rcpt_{sku}_{cart_id}`), guaranteeing idempotent execution across repeated network attempts.
 
 ---
 
